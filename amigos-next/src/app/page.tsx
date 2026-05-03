@@ -41,35 +41,41 @@ function Hero({ lang }: { lang: "zh" | "en" }) {
       {/* Content */}
       <div className="relative z-10 flex h-full flex-col justify-end px-6 pb-16 md:pb-24">
         <div className="mx-auto w-full max-w-6xl">
-          <p className="text-[11px] uppercase tracking-[0.4em] text-white/50 mb-5 font-medium">
-            {lang === "zh" ? "屏東 · 義式帕里尼專門店" : "Pingtung · Italian Panini Specialist"}
+          <p className="text-[12px] uppercase tracking-[0.3em] text-white/60 mb-5 font-medium">
+            {lang === "zh" ? "溫暖系早午餐 × 朋友聚餐 × 團體訂餐" : "Warm Brunch × Friends Gathering × Group Orders"}
           </p>
           <h1 className="font-[family-name:var(--font-display)] text-white text-5xl md:text-7xl lg:text-[5.5rem] leading-[1.05] tracking-tight max-w-3xl">
             {lang === "zh" ? (
               <span className="font-[family-name:var(--font-zh)]">
-                一口熱壓，<br />開啟慢早晨
+                把每一次聚餐，<br />變成好吃又舒服的早午餐時光
               </span>
             ) : (
-              <>One warm bite,<br />a slow morning begins.</>
+              <>Turn every gathering<br />into a warm brunch moment.</>
             )}
           </h1>
-          <p className="mt-6 text-white/65 text-base md:text-lg max-w-xl leading-relaxed font-light">
+          <p className="mt-6 text-white/70 text-base md:text-lg max-w-xl leading-relaxed">
             {lang === "zh"
-              ? "以義式帕里尼為招牌，結合早午餐與咖啡。朋友相聚、公司聚餐——我們都準備好了。"
-              : "Signature Italian panini, brunch plates, and coffee. Friends gathering, corporate meals — we're ready."}
+              ? "從義式帕里尼、墨西哥捲餅到精緻套餐，適合朋友聚餐、家庭早午餐與公司團體訂餐。每天 7:30 開始，現點現做。"
+              : "From Italian panini and tortilla wraps to brunch combos — perfect for friends, family, and corporate group orders. Fresh-made daily from 7:30 AM."}
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
             <a
               href="#menu"
               className="rounded-full bg-white px-7 py-3.5 text-[13px] font-semibold text-[var(--espresso)] tracking-wide hover:bg-[var(--terracotta)] hover:text-white transition-colors"
             >
-              {lang === "zh" ? "瀏覽菜單" : "View Menu"}
+              {lang === "zh" ? "查看菜單" : "View Menu"}
+            </a>
+            <a
+              href="tel:08-766-9690"
+              className="rounded-full bg-[var(--terracotta)] px-7 py-3.5 text-[13px] font-semibold text-white tracking-wide hover:bg-[var(--terracotta-light)] transition-colors"
+            >
+              {lang === "zh" ? "預訂座位" : "Reserve a Table"}
             </a>
             <a
               href="#catering"
               className="rounded-full border border-white/40 px-7 py-3.5 text-[13px] font-semibold text-white tracking-wide hover:bg-white/10 transition-colors"
             >
-              {lang === "zh" ? "團體訂餐方案" : "Group Orders"}
+              {lang === "zh" ? "詢問團體訂餐" : "Group Orders"}
             </a>
           </div>
 
@@ -272,8 +278,8 @@ function Story({ lang }: { lang: "zh" | "en" }) {
             <div className="space-y-5 text-[var(--muted)] leading-relaxed font-[family-name:var(--font-zh)]">
               <p>
                 {lang === "zh"
-                  ? "Amigos 早午餐以義式帕里尼為主軸，搭配早午餐拼盤、輕食三明治與手作飲品。我們相信好的食物不需要複雜，只需要用心。"
-                  : "Amigos Brunch centers on Italian panini, paired with brunch plates, light sandwiches, and handcrafted drinks. Good food doesn't need to be complicated — just made with care."}
+                  ? "Amigos 不只是吃早午餐的地方，而是和朋友放慢節奏、好好吃一餐的地方。我們以義式帕里尼為主軸，搭配早午餐拼盤、輕食三明治與手作飲品——好的食物不需要複雜，只需要用心。"
+                  : "Amigos isn't just a brunch spot — it's where you slow down with friends and enjoy a proper meal. We center on Italian panini, paired with brunch plates, light sandwiches, and handcrafted drinks. Good food doesn't need to be complicated — just made with care."}
               </p>
               <p>
                 {lang === "zh"
@@ -320,8 +326,8 @@ function SignatureHighlight({ lang }: { lang: "zh" | "en" }) {
         </h2>
         <p className="mt-6 text-white/55 max-w-lg mx-auto leading-relaxed font-[family-name:var(--font-zh)]">
           {lang === "zh"
-            ? "每一份帕里尼都經過熱壓至外酥內軟，搭配新鮮食材與手工醬料。20 多種口味，從經典到創意，總有一款適合你。"
-            : "Every panini is hot-pressed to crispy perfection with fresh ingredients and house-made sauces. 20+ flavors from classic to creative — there's one for everyone."}
+            ? "每一份帕里尼都經過熱壓至外酥內軟，搭配新鮮食材與手工醬料。20 多種口味，從經典到創意——第一次來？先從人氣推薦開始。"
+            : "Every panini is hot-pressed to crispy perfection with fresh ingredients and house-made sauces. 20+ flavors — first time? Start with our popular picks."}
         </p>
         <a
           href="#menu"
@@ -593,6 +599,44 @@ function MenuSection({ lang }: { lang: "zh" | "en" }) {
   );
 }
 
+/* ─── Social proof section ─── */
+function SocialProof({ lang }: { lang: "zh" | "en" }) {
+  return (
+    <section className="py-16 md:py-20 bg-[var(--linen)]">
+      <div className="mx-auto max-w-6xl px-6 text-center">
+        <p className="text-[11px] uppercase tracking-[0.35em] text-[var(--terracotta)] mb-4 font-semibold">
+          {lang === "zh" ? "看看大家怎麼吃 Amigos" : "See How People Enjoy Amigos"}
+        </p>
+        <h3 className="font-[family-name:var(--font-display)] text-2xl md:text-3xl tracking-tight mb-8">
+          {lang === "zh" ? (
+            <span className="font-[family-name:var(--font-zh)]">Google 評價 4.2 ★</span>
+          ) : (
+            "Google Reviews 4.2 ★"
+          )}
+        </h3>
+        <div className="flex flex-wrap justify-center gap-4">
+          <a
+            href="https://maps.app.goo.gl/DPaBLB2GdnHyErC1A"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="rounded-full bg-white border border-[var(--sand)] px-6 py-3 text-[13px] font-semibold text-[var(--espresso)] hover:border-[var(--terracotta)] transition-colors"
+          >
+            {lang === "zh" ? "查看 Google 評論" : "Read Google Reviews"}
+          </a>
+          <a
+            href="https://www.facebook.com/amigosyan"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="rounded-full bg-white border border-[var(--sand)] px-6 py-3 text-[13px] font-semibold text-[var(--espresso)] hover:border-[var(--terracotta)] transition-colors"
+          >
+            {lang === "zh" ? "追蹤 Facebook 粉專" : "Follow on Facebook"}
+          </a>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 /* ─── Catering section (B2B) ─── */
 function Catering({ lang }: { lang: "zh" | "en" }) {
   return (
@@ -616,13 +660,13 @@ function Catering({ lang }: { lang: "zh" | "en" }) {
             <div className="space-y-4 text-[var(--muted)] leading-relaxed font-[family-name:var(--font-zh)]">
               <p>
                 {lang === "zh"
-                  ? "公司會議、部門聚餐、員工福利——Amigos 提供客製化的團體訂餐方案。每份餐點都和店內品質一致，新鮮手作。"
-                  : "Team meetings, department lunches, employee perks — Amigos offers group catering. Every dish matches our in-store quality, made fresh and delivered."}
+                  ? "辦公午餐、部門聚餐、生日派對、員工福利——不管幾個人，我們都能準備。每份餐點都和店內品質一致，現做現送，乾淨包裝。"
+                  : "Office lunches, team gatherings, birthday parties, employee perks — no matter the headcount, we've got you covered. Every dish matches our in-store quality, made fresh with clean packaging."}
               </p>
               <p>
                 {lang === "zh"
-                  ? "我們理解企業需求：準時送達、乾淨包裝、彈性菜單。讓您專注在重要的事，餐點就交給我們。"
-                  : "We understand business needs: on-time delivery, clean packaging, flexible menus, proper invoicing. Focus on what matters — leave the food to us."}
+                  ? "提前 3 天預訂，菜單可依需求客製。想知道怎麼訂？直接來電或 Facebook 私訊我們。"
+                  : "Book 3 days ahead, and we'll customize the menu to your needs. Want to know how? Call us or send a Facebook message."}
               </p>
             </div>
 
@@ -688,18 +732,29 @@ function Catering({ lang }: { lang: "zh" | "en" }) {
 }
 
 /* ─── Gallery ─── */
-function Gallery() {
+function Gallery({ lang }: { lang: "zh" | "en" }) {
   const allImages = [
-    ASSETS.panini1, ASSETS.panini2, ASSETS.panini3, ASSETS.panini4,
-    ASSETS.food1, ASSETS.food2, ASSETS.food3, ASSETS.food4,
+    { src: ASSETS.panini1, zh: "酥脆帕里尼，現點現做", en: "Crispy panini, made to order" },
+    { src: ASSETS.panini2, zh: "新鮮食材，手工醬料", en: "Fresh ingredients, house-made sauces" },
+    { src: ASSETS.panini3, zh: "20+ 口味任你選", en: "20+ flavors to choose from" },
+    { src: ASSETS.panini4, zh: "適合週末慢慢吃的療癒系早午餐", en: "Weekend brunch worth savoring" },
+    { src: ASSETS.food1, zh: "朋友聚餐的最佳選擇", en: "Perfect for gathering with friends" },
+    { src: ASSETS.food2, zh: "精緻早午餐拼盤", en: "Curated brunch combo" },
+    { src: ASSETS.food3, zh: "溫暖明亮的用餐空間", en: "Warm and bright dining space" },
+    { src: ASSETS.food4, zh: "團體訂餐，品質不打折", en: "Group orders, same quality" },
   ];
 
   return (
     <section className="overflow-hidden">
       <div className="grid grid-cols-2 md:grid-cols-4 gap-1">
-        {allImages.map((src, i) => (
-          <div key={i} className="img-reveal aspect-square">
-            <img src={src} alt={`Amigos food ${i + 1}`} className="w-full h-full object-cover" />
+        {allImages.map((img, i) => (
+          <div key={i} className="img-reveal aspect-square relative group">
+            <img src={img.src} alt={lang === "zh" ? img.zh : img.en} className="w-full h-full object-cover" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+              <p className="text-white text-[13px] font-medium font-[family-name:var(--font-zh)]">
+                {lang === "zh" ? img.zh : img.en}
+              </p>
+            </div>
           </div>
         ))}
       </div>
@@ -803,15 +858,15 @@ function Reserve({ lang }: { lang: "zh" | "en" }) {
             </p>
             <h2 className="font-[family-name:var(--font-display)] text-white text-4xl md:text-6xl tracking-tight leading-tight max-w-2xl mx-auto">
               {lang === "zh" ? (
-                <span className="font-[family-name:var(--font-zh)]">給自己一個美味的早晨</span>
+                <span className="font-[family-name:var(--font-zh)]">今天想和朋友吃頓好的？</span>
               ) : (
-                "Craving a panini today?"
+                "Want a great meal with friends today?"
               )}
             </h2>
             <p className="mt-6 text-white/55 max-w-lg mx-auto leading-relaxed font-[family-name:var(--font-zh)]">
               {lang === "zh"
-                ? "個人用餐、朋友聚會、或公司團體訂餐——歡迎來電或私訊預約。"
-                : "Solo dining, friends gathering, or corporate group orders — call or message to reserve."}
+                ? "不管是兩個人的早午餐、十個人的聚餐、還是公司團體訂餐——一通電話就搞定。"
+                : "Whether it's brunch for two, a gathering of ten, or a corporate group order — one call is all it takes."}
             </p>
             <div className="mt-10 flex flex-wrap justify-center gap-3">
               <a
@@ -839,33 +894,67 @@ function Reserve({ lang }: { lang: "zh" | "en" }) {
 /* ─── Footer ─── */
 function Footer({ lang }: { lang: "zh" | "en" }) {
   return (
-    <footer className="border-t border-[var(--sand)] bg-[var(--cream)] py-12 px-6">
+    <footer className="border-t border-[var(--sand)] bg-[var(--espresso)] text-white py-14 px-6">
       <div className="mx-auto max-w-6xl">
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
+        <div className="grid md:grid-cols-3 gap-10">
+          {/* Brand */}
           <div>
-            <p className="font-[family-name:var(--font-display)] text-xl italic text-[var(--espresso)]">
-              Amigos
-            </p>
-            <p className="mt-1 text-[12px] text-[var(--muted)] font-[family-name:var(--font-zh)]">
-              {lang === "zh" ? "屏東市濟南街 14 號" : "No. 14, Jinan St., Pingtung City"}
+            <p className="font-[family-name:var(--font-display)] text-2xl italic">Amigos</p>
+            <p className="mt-2 text-[13px] text-white/50 leading-relaxed font-[family-name:var(--font-zh)]">
+              {lang === "zh"
+                ? "和朋友放慢節奏，好好吃一餐的地方。"
+                : "Where you slow down with friends and enjoy a proper meal."}
             </p>
           </div>
-          <div className="flex flex-col sm:flex-row gap-6 text-[12px] text-[var(--muted)] tracking-wide">
-            <a href="#menu" className="hover:text-[var(--espresso)] transition-colors font-[family-name:var(--font-zh)]">
-              {lang === "zh" ? "菜單" : "Menu"}
-            </a>
-            <a href="#catering" className="hover:text-[var(--espresso)] transition-colors font-[family-name:var(--font-zh)]">
-              {lang === "zh" ? "團體訂餐" : "Group Orders"}
-            </a>
-            <a href="https://www.facebook.com/amigosyan" target="_blank" rel="noopener noreferrer" className="hover:text-[var(--espresso)] transition-colors">
-              Facebook
-            </a>
-            <a href="tel:08-766-9690" className="hover:text-[var(--espresso)] transition-colors">
-              (08) 766-9690
-            </a>
+
+          {/* Quick links */}
+          <div>
+            <p className="text-[11px] uppercase tracking-[0.2em] text-white/40 font-semibold mb-4">
+              {lang === "zh" ? "快速連結" : "Quick Links"}
+            </p>
+            <div className="space-y-2 text-[13px] text-white/65 font-[family-name:var(--font-zh)]">
+              <a href="#menu" className="block hover:text-white transition-colors">{lang === "zh" ? "菜單" : "Menu"}</a>
+              <a href="#catering" className="block hover:text-white transition-colors">{lang === "zh" ? "團體訂餐" : "Group Orders"}</a>
+              <a href="#visit" className="block hover:text-white transition-colors">{lang === "zh" ? "門市資訊" : "Visit Us"}</a>
+              <a href="https://www.facebook.com/amigosyan" target="_blank" rel="noopener noreferrer" className="block hover:text-white transition-colors">Facebook</a>
+            </div>
+          </div>
+
+          {/* Contact info */}
+          <div>
+            <p className="text-[11px] uppercase tracking-[0.2em] text-white/40 font-semibold mb-4">
+              {lang === "zh" ? "聯絡我們" : "Contact"}
+            </p>
+            <div className="space-y-2 text-[13px] text-white/65 font-[family-name:var(--font-zh)]">
+              <p>{lang === "zh" ? "屏東市濟南街 14 號" : "No. 14, Jinan St., Pingtung City"}</p>
+              <a href="tel:08-766-9690" className="block hover:text-white transition-colors">(08) 766-9690</a>
+              <p>{lang === "zh" ? "每日 7:30 — 13:30" : "Daily 7:30 AM — 1:30 PM"}</p>
+              <p className="text-[12px] text-[var(--terracotta-light)]">
+                {lang === "zh" ? "店休請依粉專當月公告為主" : "Closed days per Facebook announcement"}
+              </p>
+            </div>
+            <div className="mt-4 flex gap-3">
+              <a
+                href="https://maps.app.goo.gl/DPaBLB2GdnHyErC1A"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[12px] text-white/50 hover:text-white transition-colors"
+              >
+                {lang === "zh" ? "📍 立即導航" : "📍 Directions"}
+              </a>
+              <a
+                href="https://m.me/amigosyan"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[12px] text-white/50 hover:text-white transition-colors"
+              >
+                {lang === "zh" ? "💬 傳訊息詢問" : "💬 Message Us"}
+              </a>
+            </div>
           </div>
         </div>
-        <div className="mt-8 pt-6 border-t border-[var(--sand)] text-[11px] text-[var(--muted)]">
+
+        <div className="mt-10 pt-6 border-t border-white/10 text-[11px] text-white/30">
           © 2026 Amigos Brunch. All rights reserved.
         </div>
       </div>
@@ -919,7 +1008,8 @@ export default function AmigosBrunchCafeWebsite() {
       <Story lang={lang} />
       <SignatureHighlight lang={lang} />
       <MenuSection lang={lang} />
-      <Gallery />
+      <Gallery lang={lang} />
+      <SocialProof lang={lang} />
       <Catering lang={lang} />
       <Visit lang={lang} />
       <Reserve lang={lang} />
