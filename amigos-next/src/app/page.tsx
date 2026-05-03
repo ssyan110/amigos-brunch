@@ -174,8 +174,13 @@ function Hero({ lang }: { lang: "zh" | "en" }) {
             </a>
             <ReservationPicker
               lang={lang}
-              label={lang === "zh" ? "預訂座位" : "Reserve a Table"}
-              className="rounded-full bg-[var(--terracotta)] px-7 py-3.5 text-[13px] font-semibold text-white tracking-wide hover:bg-[var(--terracotta-light)] transition-colors"
+              label={
+                <>
+                  <Phone className="h-4 w-4" />
+                  <span>{lang === "zh" ? "預訂座位" : "Reserve a Table"}</span>
+                </>
+              }
+              className="inline-flex items-center gap-2 rounded-full bg-[var(--terracotta)] px-7 py-3.5 text-[13px] font-semibold text-white tracking-wide hover:bg-[var(--terracotta-light)] transition-colors"
               panelClassName="left-0"
             />
             <a
@@ -267,8 +272,13 @@ function Header({
           ))}
           <ReservationPicker
             lang={lang}
-            label={lang === "zh" ? "訂位" : "Call"}
-            className="ml-2 rounded-full bg-[var(--terracotta)] px-5 py-2.5 text-white text-[12px] tracking-wider uppercase hover:bg-[var(--terracotta-light)] transition-colors"
+            label={
+              <>
+                <Phone className="h-3.5 w-3.5" />
+                <span>{lang === "zh" ? "訂位" : "Call"}</span>
+              </>
+            }
+            className="ml-2 inline-flex items-center gap-1.5 rounded-full bg-[var(--terracotta)] px-5 py-2.5 text-white text-[12px] tracking-wider uppercase hover:bg-[var(--terracotta-light)] transition-colors"
             panelClassName="right-0"
           />
         </nav>
@@ -318,8 +328,13 @@ function Header({
           <a href="#visit" onClick={() => setMobileOpen(false)} className="block text-lg">門市資訊</a>
           <ReservationPicker
             lang={lang}
-            label={lang === "zh" ? "來電訂位" : "Reserve"}
-            className="inline-block mt-2 rounded-full bg-[var(--terracotta)] px-6 py-3 text-white text-sm"
+            label={
+              <>
+                <Phone className="h-4 w-4" />
+                <span>{lang === "zh" ? "來電訂位" : "Reserve"}</span>
+              </>
+            }
+            className="inline-flex items-center gap-2 mt-2 rounded-full bg-[var(--terracotta)] px-6 py-3 text-white text-sm"
             panelClassName="left-0 right-0 min-w-0"
             onAction={() => setMobileOpen(false)}
           />
@@ -987,8 +1002,13 @@ function Reserve({ lang }: { lang: "zh" | "en" }) {
             <div className="mt-10 flex flex-wrap justify-center gap-3">
               <ReservationPicker
                 lang={lang}
-                label={lang === "zh" ? "來電訂位 (08) 766-9690" : "Call (08) 766-9690"}
-                className="rounded-full bg-white px-8 py-3.5 text-[13px] font-semibold text-[var(--espresso)] tracking-wide hover:bg-[var(--terracotta)] hover:text-white transition-colors"
+                label={
+                  <>
+                    <Phone className="h-4 w-4" />
+                    <span>{lang === "zh" ? "來電訂位 (08) 766-9690" : "Call (08) 766-9690"}</span>
+                  </>
+                }
+                className="inline-flex items-center gap-2 rounded-full bg-white px-8 py-3.5 text-[13px] font-semibold text-[var(--espresso)] tracking-wide hover:bg-[var(--terracotta)] hover:text-white transition-colors"
                 panelClassName="left-1/2 -translate-x-1/2"
               />
               <a
@@ -1097,8 +1117,8 @@ function StickyMobileCTA({ lang }: { lang: "zh" | "en" }) {
   if (!visible) return null;
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-50 md:hidden bg-[var(--cream)]/95 backdrop-blur-md border-t border-[var(--sand)] px-4 py-3 safe-bottom">
-      <div className="flex gap-2">
+    <div className="mobile-sticky-shell safe-bottom fixed z-50 rounded-[28px] border border-[var(--sand)] bg-[var(--warm-white)]/96 px-3 py-3 shadow-[0_18px_45px_rgba(44,36,32,0.16)] backdrop-blur-md md:hidden">
+      <div className="grid grid-cols-2 gap-3">
         <ReservationPicker
           lang={lang}
           label={
@@ -1107,15 +1127,15 @@ function StickyMobileCTA({ lang }: { lang: "zh" | "en" }) {
               <span>{lang === "zh" ? "立即訂位" : "Reserve Now"}</span>
             </>
           }
-          wrapperClassName="flex-1"
-          className="flex-1 flex items-center justify-center gap-2 rounded-full bg-[var(--terracotta)] py-3 text-white text-[13px] font-semibold tracking-wide"
+          wrapperClassName="block min-w-0"
+          className="flex w-full items-center justify-center gap-2 rounded-full bg-[var(--terracotta)] py-3 text-white text-[13px] font-semibold tracking-wide"
           panelClassName="bottom-full left-0 right-0 mb-3 mt-0 min-w-0"
         />
         <a
           href="https://maps.app.goo.gl/DPaBLB2GdnHyErC1A"
           target="_blank"
           rel="noopener noreferrer"
-          className="flex-1 flex items-center justify-center gap-2 rounded-full border border-[var(--espresso)] py-3 text-[var(--espresso)] text-[13px] font-semibold tracking-wide"
+          className="flex min-w-0 w-full items-center justify-center gap-2 rounded-full border border-[var(--espresso)] py-3 text-[var(--espresso)] text-[13px] font-semibold tracking-wide"
         >
           <MapPin className="h-4 w-4" />
           <span>{lang === "zh" ? "導航" : "Directions"}</span>
@@ -1130,7 +1150,7 @@ export default function AmigosBrunchCafeWebsite() {
   const [lang, setLang] = useState<"zh" | "en">("zh");
 
   return (
-    <div className="min-h-screen">
+    <div className="mobile-sticky-offset min-h-screen">
       <Header lang={lang} setLang={setLang} />
       <Hero lang={lang} />
       <TrustBar lang={lang} />

@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Outfit, Inter, Noto_Sans_TC, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 
@@ -26,6 +26,12 @@ export const metadata: Metadata = {
     "og:locality": "屏東市",
     "og:country-name": "Taiwan",
   },
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
 };
 
 export default function RootLayout({
