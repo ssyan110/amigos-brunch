@@ -368,14 +368,20 @@ function MenuAccordion({
       : 0;
 
   return (
-    <div className="mb-3">
-      {/* iOS 26 style pill button */}
+    <div
+      className={`mb-3 rounded-2xl transition-shadow duration-300 overflow-hidden ${
+        isOpen
+          ? "shadow-md shadow-black/8 bg-white"
+          : "shadow-sm shadow-black/5 bg-white hover:shadow-md hover:shadow-black/8"
+      }`}
+    >
+      {/* Header */}
       <button
         onClick={onToggle}
-        className={`w-full flex items-center justify-between px-5 py-4 rounded-2xl text-left transition-all duration-300 ${
+        className={`w-full flex items-center justify-between px-5 py-4 text-left transition-colors duration-300 active:scale-[0.995] ${
           isOpen
-            ? "bg-[var(--espresso)] text-white shadow-lg shadow-[var(--espresso)]/15"
-            : "bg-white text-[var(--espresso)] shadow-sm shadow-black/5 hover:shadow-md hover:shadow-black/8 active:scale-[0.98]"
+            ? "bg-[var(--espresso)] text-white"
+            : "bg-white text-[var(--espresso)]"
         }`}
         style={{ WebkitTapHighlightColor: "transparent" }}
       >
@@ -417,13 +423,13 @@ function MenuAccordion({
         </div>
       </button>
 
-      {/* Expandable content */}
+      {/* Items — directly attached below header */}
       <div
         className={`overflow-hidden transition-all duration-400 ease-in-out ${
-          isOpen ? "max-h-[3000px] opacity-100 mt-2" : "max-h-0 opacity-0"
+          isOpen ? "max-h-[3000px] opacity-100" : "max-h-0 opacity-0"
         }`}
       >
-        <div className="bg-white rounded-2xl shadow-sm shadow-black/5 px-5 py-4">
+        <div className="px-5 py-4 border-t border-[var(--sand)]/50">
           {/* Category note */}
           {category.note && (
             <p className="text-[13px] text-[var(--muted)] mb-4 italic font-[family-name:var(--font-zh)]">
