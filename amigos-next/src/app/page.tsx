@@ -1,7 +1,100 @@
 "use client";
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useCallback, useRef } from "react";
 import { ASSETS, FULL_MENU, HERO_SLIDES, CATERING_PACKAGES } from "@/lib/data";
 import type { MenuCategory, MenuItem } from "@/lib/data";
+
+const PHONE_HREF = "tel:08-766-9690";
+const FACEBOOK_HREF = "https://www.facebook.com/amigosyan";
+
+function ReservationPicker({
+  lang,
+  label,
+  wrapperClassName = "",
+  className,
+  panelClassName = "",
+  onAction,
+}: {
+  lang: "zh" | "en";
+  label: string;
+  wrapperClassName?: string;
+  className: string;
+  panelClassName?: string;
+  onAction?: () => void;
+}) {
+  const [open, setOpen] = useState(false);
+  const pickerRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    if (!open) return;
+
+    const onPointerDown = (event: MouseEvent) => {
+      if (!pickerRef.current?.contains(event.target as Node)) {
+        setOpen(false);
+      }
+    };
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", onPointerDown);
+    document.addEventListener("keydown", onKeyDown);
+
+    return () => {
+      document.removeEventListener("mousedown", onPointerDown);
+      document.removeEventListener("keydown", onKeyDown);
+    };
+  }, [open]);
+
+  const handleAction = () => {
+    setOpen(false);
+    onAction?.();
+  };
+
+  return (
+    <div ref={pickerRef} className={`relative ${wrapperClassName}`}>
+      <button
+        type="button"
+        onClick={() => setOpen((prev) => !prev)}
+        aria-expanded={open}
+        aria-haspopup="menu"
+        className={className}
+      >
+        {label}
+      </button>
+
+      {open && (
+        <div
+          className={`absolute z-50 mt-3 min-w-[220px] rounded-3xl border border-[var(--sand)] bg-white p-2 shadow-[0_18px_50px_rgba(47,38,30,0.18)] ${panelClassName}`}
+        >
+          <p className="px-3 py-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--muted)]">
+            {lang === "zh" ? "選擇聯絡方式" : "Choose Contact"}
+          </p>
+          <div className="space-y-1">
+            <a
+              href={PHONE_HREF}
+              onClick={handleAction}
+              className="block rounded-2xl px-3 py-3 text-sm font-semibold text-[var(--espresso)] transition-colors hover:bg-[var(--cream)]"
+            >
+              {lang === "zh" ? "來電訂位 (08) 766-9690" : "Call (08) 766-9690"}
+            </a>
+            <a
+              href={FACEBOOK_HREF}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={handleAction}
+              className="block rounded-2xl px-3 py-3 text-sm font-semibold text-[var(--espresso)] transition-colors hover:bg-[var(--cream)]"
+            >
+              {lang === "zh" ? "Facebook 粉專私訊" : "Message on Facebook"}
+            </a>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
 
 /* ─── Auto-sliding Hero ─── */
 function Hero({ lang }: { lang: "zh" | "en" }) {
@@ -65,12 +158,12 @@ function Hero({ lang }: { lang: "zh" | "en" }) {
             >
               {lang === "zh" ? "查看菜單" : "View Menu"}
             </a>
-            <a
-              href="tel:08-766-9690"
+            <ReservationPicker
+              lang={lang}
+              label={lang === "zh" ? "預訂座位" : "Reserve a Table"}
               className="rounded-full bg-[var(--terracotta)] px-7 py-3.5 text-[13px] font-semibold text-white tracking-wide hover:bg-[var(--terracotta-light)] transition-colors"
-            >
-              {lang === "zh" ? "預訂座位" : "Reserve a Table"}
-            </a>
+              panelClassName="left-0"
+            />
             <a
               href="#catering"
               className="rounded-full border border-white/40 px-7 py-3.5 text-[13px] font-semibold text-white tracking-wide hover:bg-white/10 transition-colors"
@@ -158,12 +251,12 @@ function Header({
               {lang === "zh" ? link.zh : link.en}
             </a>
           ))}
-          <a
-            href="tel:08-766-9690"
+          <ReservationPicker
+            lang={lang}
+            label={lang === "zh" ? "訂位" : "Call"}
             className="ml-2 rounded-full bg-[var(--terracotta)] px-5 py-2.5 text-white text-[12px] tracking-wider uppercase hover:bg-[var(--terracotta-light)] transition-colors"
-          >
-            {lang === "zh" ? "訂位" : "Call"}
-          </a>
+            panelClassName="right-0"
+          />
         </nav>
 
         <div className="flex items-center gap-4">
@@ -207,9 +300,13 @@ function Header({
           <a href="#menu" onClick={() => setMobileOpen(false)} className="block text-lg">菜單</a>
           <a href="#catering" onClick={() => setMobileOpen(false)} className="block text-lg">團體訂餐</a>
           <a href="#visit" onClick={() => setMobileOpen(false)} className="block text-lg">門市資訊</a>
-          <a href="#reserve" onClick={() => setMobileOpen(false)} className="inline-block mt-2 rounded-full bg-[var(--terracotta)] px-6 py-3 text-white text-sm">
-            來電訂位
-          </a>
+          <ReservationPicker
+            lang={lang}
+            label={lang === "zh" ? "來電訂位" : "Reserve"}
+            className="inline-block mt-2 rounded-full bg-[var(--terracotta)] px-6 py-3 text-white text-sm"
+            panelClassName="left-0 right-0 min-w-0"
+            onAction={() => setMobileOpen(false)}
+          />
         </div>
       )}
     </header>
@@ -869,12 +966,12 @@ function Reserve({ lang }: { lang: "zh" | "en" }) {
                 : "Whether it's brunch for two, a gathering of ten, or a corporate group order — one call is all it takes."}
             </p>
             <div className="mt-10 flex flex-wrap justify-center gap-3">
-              <a
-                href="tel:08-766-9690"
+              <ReservationPicker
+                lang={lang}
+                label={lang === "zh" ? "來電訂位 (08) 766-9690" : "Call (08) 766-9690"}
                 className="rounded-full bg-white px-8 py-3.5 text-[13px] font-semibold text-[var(--espresso)] tracking-wide hover:bg-[var(--terracotta)] hover:text-white transition-colors"
-              >
-                {lang === "zh" ? "來電訂位 (08) 766-9690" : "Call (08) 766-9690"}
-              </a>
+                panelClassName="left-1/2 -translate-x-1/2"
+              />
               <a
                 href="https://maps.app.goo.gl/DPaBLB2GdnHyErC1A"
                 target="_blank"
@@ -977,12 +1074,13 @@ function StickyMobileCTA({ lang }: { lang: "zh" | "en" }) {
   return (
     <div className="fixed bottom-0 left-0 right-0 z-50 md:hidden bg-[var(--cream)]/95 backdrop-blur-md border-t border-[var(--sand)] px-4 py-3 safe-bottom">
       <div className="flex gap-2">
-        <a
-          href="tel:08-766-9690"
+        <ReservationPicker
+          lang={lang}
+          label={`📞 ${lang === "zh" ? "立即訂位" : "Reserve Now"}`}
+          wrapperClassName="flex-1"
           className="flex-1 flex items-center justify-center gap-2 rounded-full bg-[var(--terracotta)] py-3 text-white text-[13px] font-semibold tracking-wide"
-        >
-          📞 {lang === "zh" ? "立即來電" : "Call Now"}
-        </a>
+          panelClassName="bottom-full left-0 right-0 mb-3 mt-0 min-w-0"
+        />
         <a
           href="https://maps.app.goo.gl/DPaBLB2GdnHyErC1A"
           target="_blank"
