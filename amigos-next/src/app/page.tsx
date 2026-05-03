@@ -1,5 +1,17 @@
 "use client";
 import React, { useState, useEffect, useCallback, useRef } from "react";
+import {
+  ArrowRight,
+  Check,
+  ChevronDown,
+  MapPin,
+  Menu as MenuIcon,
+  MessageCircleMore,
+  Phone,
+  Star,
+  UtensilsCrossed,
+  X as CloseIcon,
+} from "lucide-react";
 import { ASSETS, FULL_MENU, HERO_SLIDES, CATERING_PACKAGES } from "@/lib/data";
 import type { MenuCategory, MenuItem } from "@/lib/data";
 
@@ -15,7 +27,7 @@ function ReservationPicker({
   onAction,
 }: {
   lang: "zh" | "en";
-  label: string;
+  label: React.ReactNode;
   wrapperClassName?: string;
   className: string;
   panelClassName?: string;
@@ -76,18 +88,20 @@ function ReservationPicker({
             <a
               href={PHONE_HREF}
               onClick={handleAction}
-              className="block rounded-2xl px-3 py-3 text-sm font-semibold text-[var(--espresso)] transition-colors hover:bg-[var(--cream)]"
+              className="flex items-center gap-2 rounded-2xl px-3 py-3 text-sm font-semibold text-[var(--espresso)] transition-colors hover:bg-[var(--cream)]"
             >
-              {lang === "zh" ? "來電訂位 (08) 766-9690" : "Call (08) 766-9690"}
+              <Phone className="h-4 w-4" />
+              <span>{lang === "zh" ? "來電訂位 (08) 766-9690" : "Call (08) 766-9690"}</span>
             </a>
             <a
               href={FACEBOOK_HREF}
               target="_blank"
               rel="noopener noreferrer"
               onClick={handleAction}
-              className="block rounded-2xl px-3 py-3 text-sm font-semibold text-[var(--espresso)] transition-colors hover:bg-[var(--cream)]"
+              className="flex items-center gap-2 rounded-2xl px-3 py-3 text-sm font-semibold text-[var(--espresso)] transition-colors hover:bg-[var(--cream)]"
             >
-              {lang === "zh" ? "Facebook 粉專私訊" : "Message on Facebook"}
+              <MessageCircleMore className="h-4 w-4" />
+              <span>{lang === "zh" ? "Facebook 粉專私訊" : "Message on Facebook"}</span>
             </a>
           </div>
         </div>
@@ -284,12 +298,14 @@ function Header({
             </button>
           </div>
           <button
+            type="button"
+            aria-label={mobileOpen ? (lang === "zh" ? "關閉選單" : "Close menu") : "Open menu"}
             className={`md:hidden text-sm font-semibold tracking-wider uppercase transition-colors ${
               scrolled ? "text-[var(--espresso)]" : "text-white"
             }`}
             onClick={() => setMobileOpen(!mobileOpen)}
           >
-            {mobileOpen ? "✕" : "Menu"}
+            {mobileOpen ? <CloseIcon className="h-5 w-5" /> : <MenuIcon className="h-5 w-5" />}
           </button>
         </div>
       </div>
@@ -319,7 +335,7 @@ function TrustBar({ lang }: { lang: "zh" | "en" }) {
   const stats = [
     { num: "10+", zh: "年在地經營", en: "Years in Pingtung", href: undefined },
     { num: "20+", zh: "款帕里尼口味", en: "Panini Varieties", href: undefined },
-    { num: "4.2★", zh: "Google 評分", en: "Google Rating", href: "https://maps.app.goo.gl/DPaBLB2GdnHyErC1A" },
+    { num: "4.2", zh: "Google 評分", en: "Google Rating", href: "https://maps.app.goo.gl/DPaBLB2GdnHyErC1A", showStar: true },
     { num: "100%", zh: "手作美味", en: "Handcrafted", href: undefined },
   ];
 
@@ -331,7 +347,10 @@ function TrustBar({ lang }: { lang: "zh" | "en" }) {
             const inner = (
               <>
                 <p className="font-[family-name:var(--font-accent)] text-3xl md:text-4xl text-[var(--terracotta)]">
-                  {s.num}
+                  <span className="inline-flex items-center gap-1.5">
+                    <span>{s.num}</span>
+                    {s.showStar ? <Star className="h-5 w-5 fill-current" /> : null}
+                  </span>
                 </p>
                 <p className="mt-1 text-[12px] uppercase tracking-[0.15em] text-[var(--muted)] font-medium">
                   {lang === "zh" ? s.zh : s.en}
@@ -341,8 +360,9 @@ function TrustBar({ lang }: { lang: "zh" | "en" }) {
             return s.href ? (
               <a key={s.num} href={s.href} target="_blank" rel="noopener noreferrer" className="group hover:opacity-80 transition-opacity">
                 {inner}
-                <p className="mt-1 text-[10px] text-[var(--terracotta)] opacity-0 group-hover:opacity-100 transition-opacity">
-                  {lang === "zh" ? "查看評論 →" : "See reviews →"}
+                <p className="mt-1 inline-flex items-center gap-1 text-[10px] text-[var(--terracotta)] opacity-0 group-hover:opacity-100 transition-opacity">
+                  <span>{lang === "zh" ? "查看評論" : "See reviews"}</span>
+                  <ArrowRight className="h-3 w-3" />
                 </p>
               </a>
             ) : (
@@ -525,21 +545,9 @@ function MenuAccordion({
           }`}>
             {itemCount}
           </span>
-          <svg
-            width="18"
-            height="18"
-            viewBox="0 0 18 18"
-            fill="none"
-            className={`transition-transform duration-300 ${isOpen ? "rotate-180" : "rotate-0"}`}
-          >
-            <path
-              d="M4.5 6.75L9 11.25L13.5 6.75"
-              stroke="currentColor"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
+          <ChevronDown
+            className={`h-[18px] w-[18px] transition-transform duration-300 ${isOpen ? "rotate-180" : "rotate-0"}`}
+          />
         </div>
       </button>
 
@@ -553,7 +561,7 @@ function MenuAccordion({
           {/* Category note — panini gets a banner, others get italic text */}
           {category.note && category.id === "panini-savoury" ? (
             <div className="mb-4 rounded-xl bg-amber-50 px-4 py-3 flex items-center gap-2">
-              <span className="text-lg">🍟</span>
+              <UtensilsCrossed className="h-4 w-4 shrink-0 text-amber-700" />
               <p className="text-[13px] text-amber-800 font-medium font-[family-name:var(--font-zh)]">
                 {lang === "zh" ? category.note.zh : category.note.en}
               </p>
@@ -705,28 +713,33 @@ function SocialProof({ lang }: { lang: "zh" | "en" }) {
           {lang === "zh" ? "看看大家怎麼吃 Amigos" : "See How People Enjoy Amigos"}
         </p>
         <h3 className="font-[family-name:var(--font-display)] text-2xl md:text-3xl tracking-tight mb-8">
-          {lang === "zh" ? (
-            <span className="font-[family-name:var(--font-zh)]">Google 評價 4.2 ★</span>
-          ) : (
-            "Google Reviews 4.2 ★"
-          )}
+          <span className="inline-flex items-center gap-2">
+            <Star className="h-6 w-6 fill-[var(--terracotta)] text-[var(--terracotta)]" />
+            {lang === "zh" ? (
+              <span className="font-[family-name:var(--font-zh)]">Google 評價 4.2</span>
+            ) : (
+              "Google Reviews 4.2"
+            )}
+          </span>
         </h3>
         <div className="flex flex-wrap justify-center gap-4">
           <a
             href="https://maps.app.goo.gl/DPaBLB2GdnHyErC1A"
             target="_blank"
             rel="noopener noreferrer"
-            className="rounded-full bg-white border border-[var(--sand)] px-6 py-3 text-[13px] font-semibold text-[var(--espresso)] hover:border-[var(--terracotta)] transition-colors"
+            className="inline-flex items-center gap-2 rounded-full bg-white border border-[var(--sand)] px-6 py-3 text-[13px] font-semibold text-[var(--espresso)] hover:border-[var(--terracotta)] transition-colors"
           >
-            {lang === "zh" ? "查看 Google 評論" : "Read Google Reviews"}
+            <Star className="h-4 w-4" />
+            <span>{lang === "zh" ? "查看 Google 評論" : "Read Google Reviews"}</span>
           </a>
           <a
             href="https://www.facebook.com/amigosyan"
             target="_blank"
             rel="noopener noreferrer"
-            className="rounded-full bg-white border border-[var(--sand)] px-6 py-3 text-[13px] font-semibold text-[var(--espresso)] hover:border-[var(--terracotta)] transition-colors"
+            className="inline-flex items-center gap-2 rounded-full bg-white border border-[var(--sand)] px-6 py-3 text-[13px] font-semibold text-[var(--espresso)] hover:border-[var(--terracotta)] transition-colors"
           >
-            {lang === "zh" ? "追蹤 Facebook 粉專" : "Follow on Facebook"}
+            <MessageCircleMore className="h-4 w-4" />
+            <span>{lang === "zh" ? "追蹤 Facebook 粉專" : "Follow on Facebook"}</span>
           </a>
         </div>
       </div>
@@ -771,17 +784,19 @@ function Catering({ lang }: { lang: "zh" | "en" }) {
             <div className="mt-8 flex flex-wrap gap-3">
               <a
                 href="tel:08-766-9690"
-                className="rounded-full bg-[var(--terracotta)] px-7 py-3.5 text-[13px] font-semibold text-white tracking-wide hover:bg-[var(--terracotta-light)] transition-colors"
+                className="inline-flex items-center gap-2 rounded-full bg-[var(--terracotta)] px-7 py-3.5 text-[13px] font-semibold text-white tracking-wide hover:bg-[var(--terracotta-light)] transition-colors"
               >
-                {lang === "zh" ? "來電洽詢 (08) 766-9690" : "Call (08) 766-9690"}
+                <Phone className="h-4 w-4" />
+                <span>{lang === "zh" ? "來電洽詢 (08) 766-9690" : "Call (08) 766-9690"}</span>
               </a>
               <a
                 href="https://www.facebook.com/amigosyan"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="rounded-full border border-[var(--espresso)] px-7 py-3.5 text-[13px] font-semibold text-[var(--espresso)] tracking-wide hover:bg-[var(--espresso)] hover:text-white transition-colors"
+                className="inline-flex items-center gap-2 rounded-full border border-[var(--espresso)] px-7 py-3.5 text-[13px] font-semibold text-[var(--espresso)] tracking-wide hover:bg-[var(--espresso)] hover:text-white transition-colors"
               >
-                {lang === "zh" ? "Facebook 私訊" : "Message on Facebook"}
+                <MessageCircleMore className="h-4 w-4" />
+                <span>{lang === "zh" ? "Facebook 私訊" : "Message on Facebook"}</span>
               </a>
             </div>
           </div>
@@ -799,8 +814,10 @@ function Catering({ lang }: { lang: "zh" | "en" }) {
                 <p className="text-sm text-[var(--muted)] leading-relaxed font-[family-name:var(--font-zh)]">
                   {lang === "zh" ? pkg.descZh : pkg.descEn}
                 </p>
-                <a href="tel:08-766-9690" className="mt-3 inline-block text-[12px] font-semibold text-[var(--terracotta)] uppercase tracking-wider hover:text-[var(--terracotta-light)] transition-colors">
-                  {lang === "zh" ? "來電洽詢報價 →" : "Call for pricing →"}
+                <a href="tel:08-766-9690" className="mt-3 inline-flex items-center gap-1.5 text-[12px] font-semibold text-[var(--terracotta)] uppercase tracking-wider hover:text-[var(--terracotta-light)] transition-colors">
+                  <Phone className="h-3.5 w-3.5" />
+                  <span>{lang === "zh" ? "來電洽詢報價" : "Call for pricing"}</span>
+                  <ArrowRight className="h-3.5 w-3.5" />
                 </a>
               </div>
             ))}
@@ -812,11 +829,11 @@ function Catering({ lang }: { lang: "zh" | "en" }) {
               </p>
               <ul className="space-y-2 text-sm text-white/75 font-[family-name:var(--font-zh)]">
                 <li className="flex items-start gap-2">
-                  <span className="text-[var(--terracotta-light)] mt-0.5">✓</span>
+                  <Check className="mt-0.5 h-4 w-4 shrink-0 text-[var(--terracotta-light)]" />
                   {lang === "zh" ? "提前 3 天預訂，準時送達" : "3-day advance booking, on-time delivery"}
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-[var(--terracotta-light)] mt-0.5">✓</span>
+                  <Check className="mt-0.5 h-4 w-4 shrink-0 text-[var(--terracotta-light)]" />
                   {lang === "zh" ? "客製化菜單，滿足素食與過敏需求" : "Custom menus for dietary needs"}
                 </li>
               </ul>
@@ -914,17 +931,19 @@ function Visit({ lang }: { lang: "zh" | "en" }) {
                 href="https://www.facebook.com/amigosyan"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center rounded-full border border-[var(--espresso)] px-5 py-2.5 text-[12px] font-semibold tracking-wider uppercase text-[var(--espresso)] hover:bg-[var(--espresso)] hover:text-white transition-colors"
+                className="inline-flex items-center gap-2 rounded-full border border-[var(--espresso)] px-5 py-2.5 text-[12px] font-semibold tracking-wider uppercase text-[var(--espresso)] hover:bg-[var(--espresso)] hover:text-white transition-colors"
               >
-                Facebook
+                <MessageCircleMore className="h-4 w-4" />
+                <span>Facebook</span>
               </a>
               <a
                 href="https://maps.app.goo.gl/DPaBLB2GdnHyErC1A"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center rounded-full border border-[var(--espresso)] px-5 py-2.5 text-[12px] font-semibold tracking-wider uppercase text-[var(--espresso)] hover:bg-[var(--espresso)] hover:text-white transition-colors"
+                className="inline-flex items-center gap-2 rounded-full border border-[var(--espresso)] px-5 py-2.5 text-[12px] font-semibold tracking-wider uppercase text-[var(--espresso)] hover:bg-[var(--espresso)] hover:text-white transition-colors"
               >
-                Google Maps
+                <MapPin className="h-4 w-4" />
+                <span>Google Maps</span>
               </a>
             </div>
           </div>
@@ -976,9 +995,10 @@ function Reserve({ lang }: { lang: "zh" | "en" }) {
                 href="https://maps.app.goo.gl/DPaBLB2GdnHyErC1A"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="rounded-full border border-white/40 px-8 py-3.5 text-[13px] font-semibold text-white tracking-wide hover:bg-white/10 transition-colors"
+                className="inline-flex items-center gap-2 rounded-full border border-white/40 px-8 py-3.5 text-[13px] font-semibold text-white tracking-wide hover:bg-white/10 transition-colors"
               >
-                {lang === "zh" ? "Google Maps 導航" : "Get Directions"}
+                <MapPin className="h-4 w-4" />
+                <span>{lang === "zh" ? "Google Maps 導航" : "Get Directions"}</span>
               </a>
             </div>
           </div>
@@ -1013,7 +1033,10 @@ function Footer({ lang }: { lang: "zh" | "en" }) {
               <a href="#menu" className="block hover:text-white transition-colors">{lang === "zh" ? "菜單" : "Menu"}</a>
               <a href="#catering" className="block hover:text-white transition-colors">{lang === "zh" ? "團體訂餐" : "Group Orders"}</a>
               <a href="#visit" className="block hover:text-white transition-colors">{lang === "zh" ? "門市資訊" : "Visit Us"}</a>
-              <a href="https://www.facebook.com/amigosyan" target="_blank" rel="noopener noreferrer" className="block hover:text-white transition-colors">Facebook</a>
+              <a href="https://www.facebook.com/amigosyan" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 hover:text-white transition-colors">
+                <MessageCircleMore className="h-4 w-4" />
+                <span>Facebook</span>
+              </a>
             </div>
           </div>
 
@@ -1035,17 +1058,19 @@ function Footer({ lang }: { lang: "zh" | "en" }) {
                 href="https://maps.app.goo.gl/DPaBLB2GdnHyErC1A"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[12px] text-white/50 hover:text-white transition-colors"
+                className="inline-flex items-center gap-1.5 text-[12px] text-white/50 hover:text-white transition-colors"
               >
-                {lang === "zh" ? "📍 立即導航" : "📍 Directions"}
+                <MapPin className="h-3.5 w-3.5" />
+                <span>{lang === "zh" ? "立即導航" : "Directions"}</span>
               </a>
               <a
                 href="https://m.me/amigosyan"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[12px] text-white/50 hover:text-white transition-colors"
+                className="inline-flex items-center gap-1.5 text-[12px] text-white/50 hover:text-white transition-colors"
               >
-                {lang === "zh" ? "💬 傳訊息詢問" : "💬 Message Us"}
+                <MessageCircleMore className="h-3.5 w-3.5" />
+                <span>{lang === "zh" ? "傳訊息詢問" : "Message Us"}</span>
               </a>
             </div>
           </div>
@@ -1076,7 +1101,12 @@ function StickyMobileCTA({ lang }: { lang: "zh" | "en" }) {
       <div className="flex gap-2">
         <ReservationPicker
           lang={lang}
-          label={`📞 ${lang === "zh" ? "立即訂位" : "Reserve Now"}`}
+          label={
+            <>
+              <Phone className="h-4 w-4" />
+              <span>{lang === "zh" ? "立即訂位" : "Reserve Now"}</span>
+            </>
+          }
           wrapperClassName="flex-1"
           className="flex-1 flex items-center justify-center gap-2 rounded-full bg-[var(--terracotta)] py-3 text-white text-[13px] font-semibold tracking-wide"
           panelClassName="bottom-full left-0 right-0 mb-3 mt-0 min-w-0"
@@ -1087,7 +1117,8 @@ function StickyMobileCTA({ lang }: { lang: "zh" | "en" }) {
           rel="noopener noreferrer"
           className="flex-1 flex items-center justify-center gap-2 rounded-full border border-[var(--espresso)] py-3 text-[var(--espresso)] text-[13px] font-semibold tracking-wide"
         >
-          📍 {lang === "zh" ? "導航" : "Directions"}
+          <MapPin className="h-4 w-4" />
+          <span>{lang === "zh" ? "導航" : "Directions"}</span>
         </a>
       </div>
     </div>
