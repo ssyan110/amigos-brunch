@@ -368,78 +368,99 @@ function MenuAccordion({
       : 0;
 
   return (
-    <div className="border-b border-[var(--sand)]">
-      {/* Header — always visible */}
+    <div className="mb-3">
+      {/* iOS 26 style pill button */}
       <button
         onClick={onToggle}
-        className="w-full flex items-center justify-between py-5 md:py-6 text-left group"
+        className={`w-full flex items-center justify-between px-5 py-4 rounded-2xl text-left transition-all duration-300 ${
+          isOpen
+            ? "bg-[var(--espresso)] text-white shadow-lg shadow-[var(--espresso)]/15"
+            : "bg-white text-[var(--espresso)] shadow-sm shadow-black/5 hover:shadow-md hover:shadow-black/8 active:scale-[0.98]"
+        }`}
+        style={{ WebkitTapHighlightColor: "transparent" }}
       >
         <div className="flex-1 min-w-0">
-          <h3 className="text-lg md:text-xl font-semibold font-[family-name:var(--font-zh)] text-[var(--espresso)] group-hover:text-[var(--terracotta)] transition-colors">
+          <h3 className="text-[15px] font-semibold font-[family-name:var(--font-zh)] leading-snug">
             {lang === "zh" ? category.zh : category.en}
           </h3>
           {lang === "zh" && (
-            <p className="text-[11px] uppercase tracking-[0.2em] text-[var(--muted)] mt-0.5">
+            <p className={`text-[11px] tracking-[0.12em] mt-0.5 ${
+              isOpen ? "text-white/50" : "text-[var(--muted)]"
+            }`}>
               {category.en}
             </p>
           )}
         </div>
-        <div className="flex items-center gap-3 shrink-0 ml-4">
-          <span className="text-[12px] text-[var(--muted)] tabular-nums">
-            {itemCount} {lang === "zh" ? "項" : "items"}
+        <div className="flex items-center gap-2.5 shrink-0 ml-4">
+          <span className={`text-[11px] font-medium tabular-nums px-2 py-0.5 rounded-full ${
+            isOpen
+              ? "bg-white/15 text-white/70"
+              : "bg-[var(--linen)] text-[var(--muted)]"
+          }`}>
+            {itemCount}
           </span>
-          <span
-            className={`text-[var(--muted)] transition-transform duration-300 text-lg ${
-              isOpen ? "rotate-45" : "rotate-0"
-            }`}
+          <svg
+            width="18"
+            height="18"
+            viewBox="0 0 18 18"
+            fill="none"
+            className={`transition-transform duration-300 ${isOpen ? "rotate-180" : "rotate-0"}`}
           >
-            +
-          </span>
+            <path
+              d="M4.5 6.75L9 11.25L13.5 6.75"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
         </div>
       </button>
 
       {/* Expandable content */}
       <div
         className={`overflow-hidden transition-all duration-400 ease-in-out ${
-          isOpen ? "max-h-[3000px] opacity-100 pb-6" : "max-h-0 opacity-0"
+          isOpen ? "max-h-[3000px] opacity-100 mt-2" : "max-h-0 opacity-0"
         }`}
       >
-        {/* Category note */}
-        {category.note && (
-          <p className="text-[13px] text-[var(--muted)] mb-4 pl-1 italic font-[family-name:var(--font-zh)]">
-            {lang === "zh" ? category.note.zh : category.note.en}
-          </p>
-        )}
+        <div className="bg-white rounded-2xl shadow-sm shadow-black/5 px-5 py-4">
+          {/* Category note */}
+          {category.note && (
+            <p className="text-[13px] text-[var(--muted)] mb-4 italic font-[family-name:var(--font-zh)]">
+              {lang === "zh" ? category.note.zh : category.note.en}
+            </p>
+          )}
 
-        {/* Flat items */}
-        {category.items && (
-          <ul className="divide-y divide-[var(--sand)]/60">
-            {category.items.map((item, i) => (
-              <MenuItemRow key={i} item={item} lang={lang} />
-            ))}
-          </ul>
-        )}
+          {/* Flat items */}
+          {category.items && (
+            <ul className="divide-y divide-[var(--sand)]/60">
+              {category.items.map((item, i) => (
+                <MenuItemRow key={i} item={item} lang={lang} />
+              ))}
+            </ul>
+          )}
 
-        {/* Sub-grouped items (lunch specials) */}
-        {category.subGroups && (
-          <div className="space-y-6">
-            {category.subGroups.map((group, gi) => (
-              <div key={gi}>
-                <div className="flex items-center gap-3 mb-3">
-                  <span className="text-[12px] font-semibold uppercase tracking-[0.15em] text-[var(--terracotta)]">
-                    {lang === "zh" ? group.zh : group.en}
-                  </span>
-                  <span className="flex-1 border-b border-[var(--sand)]" />
+          {/* Sub-grouped items (lunch specials) */}
+          {category.subGroups && (
+            <div className="space-y-6">
+              {category.subGroups.map((group, gi) => (
+                <div key={gi}>
+                  <div className="flex items-center gap-3 mb-3">
+                    <span className="text-[12px] font-semibold uppercase tracking-[0.15em] text-[var(--terracotta)]">
+                      {lang === "zh" ? group.zh : group.en}
+                    </span>
+                    <span className="flex-1 border-b border-[var(--sand)]" />
+                  </div>
+                  <ul className="divide-y divide-[var(--sand)]/60">
+                    {group.items.map((item, i) => (
+                      <MenuItemRow key={i} item={item} lang={lang} />
+                    ))}
+                  </ul>
                 </div>
-                <ul className="divide-y divide-[var(--sand)]/60">
-                  {group.items.map((item, i) => (
-                    <MenuItemRow key={i} item={item} lang={lang} />
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
-        )}
+              ))}
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );
@@ -504,10 +525,10 @@ function MenuSection({ lang }: { lang: "zh" | "en" }) {
 
         {/* Food section */}
         <div className="mb-16">
-          <p className="text-[11px] uppercase tracking-[0.35em] text-[var(--muted)] mb-6 font-semibold">
+          <p className="text-[11px] uppercase tracking-[0.35em] text-[var(--muted)] mb-4 font-semibold">
             {lang === "zh" ? "餐點" : "Food"}
           </p>
-          <div className="border-t border-[var(--sand)]">
+          <div className="space-y-0">
             {foodCategories.map((cat) => (
               <MenuAccordion
                 key={cat.id}
@@ -522,10 +543,10 @@ function MenuSection({ lang }: { lang: "zh" | "en" }) {
 
         {/* Drinks section */}
         <div>
-          <p className="text-[11px] uppercase tracking-[0.35em] text-[var(--muted)] mb-6 font-semibold">
+          <p className="text-[11px] uppercase tracking-[0.35em] text-[var(--muted)] mb-4 font-semibold">
             {lang === "zh" ? "飲品" : "Drinks"}
           </p>
-          <div className="border-t border-[var(--sand)]">
+          <div className="space-y-0">
             {drinkCategories.map((cat) => (
               <MenuAccordion
                 key={cat.id}
