@@ -61,8 +61,8 @@ html {
 }
 
 .mobile-sticky-shell {
-  left: 16px;
-  right: 16px;
+  left: max(16px, calc(env(safe-area-inset-left) + 12px));
+  right: max(16px, calc(env(safe-area-inset-right) + 12px));
   bottom: calc(env(safe-area-inset-bottom) + 12px);
 }
 

@@ -1118,7 +1118,7 @@ function StickyMobileCTA({ lang }: { lang: "zh" | "en" }) {
 
   return (
     <div className="mobile-sticky-shell safe-bottom fixed z-50 rounded-[28px] border border-[var(--sand)] bg-[var(--warm-white)]/96 px-3 py-3 shadow-[0_18px_45px_rgba(44,36,32,0.16)] backdrop-blur-md md:hidden">
-      <div className="flex gap-2">
+      <div className="grid grid-cols-2 gap-3">
         <ReservationPicker
           lang={lang}
           label={
@@ -1127,7 +1127,7 @@ function StickyMobileCTA({ lang }: { lang: "zh" | "en" }) {
               <span>{lang === "zh" ? "立即訂位" : "Reserve Now"}</span>
             </>
           }
-          wrapperClassName="flex-1 min-w-0"
+          wrapperClassName="block min-w-0"
           className="flex w-full items-center justify-center gap-2 rounded-full bg-[var(--terracotta)] py-3 text-white text-[13px] font-semibold tracking-wide"
           panelClassName="bottom-full left-0 right-0 mb-3 mt-0 min-w-0"
         />
@@ -1135,7 +1135,7 @@ function StickyMobileCTA({ lang }: { lang: "zh" | "en" }) {
           href="https://maps.app.goo.gl/DPaBLB2GdnHyErC1A"
           target="_blank"
           rel="noopener noreferrer"
-          className="flex-1 min-w-0 flex items-center justify-center gap-2 rounded-full border border-[var(--espresso)] py-3 text-[var(--espresso)] text-[13px] font-semibold tracking-wide"
+          className="flex min-w-0 w-full items-center justify-center gap-2 rounded-full border border-[var(--espresso)] py-3 text-[var(--espresso)] text-[13px] font-semibold tracking-wide"
         >
           <MapPin className="h-4 w-4" />
           <span>{lang === "zh" ? "導航" : "Directions"}</span>
