@@ -608,7 +608,7 @@ function Catering({ lang }: { lang: "zh" | "en" }) {
                   {lang === "zh" ? pkg.descZh : pkg.descEn}
                 </p>
                 <p className="mt-3 text-[12px] font-semibold text-[var(--terracotta)] uppercase tracking-wider">
-                  {lang === "zh" ? "來電洽詢報價" : "Call for pricing"}
+                  {lang === "zh" ? "來電洽詢報價" : "Call to request for proposal"}
                 </p>
               </div>
             ))}
@@ -638,12 +638,17 @@ function Catering({ lang }: { lang: "zh" | "en" }) {
 
 /* ─── Gallery ─── */
 function Gallery() {
+  const allImages = [
+    ASSETS.panini1, ASSETS.panini2, ASSETS.panini3, ASSETS.panini4,
+    ASSETS.food1, ASSETS.food2, ASSETS.food3, ASSETS.food4,
+  ];
+
   return (
     <section className="overflow-hidden">
       <div className="grid grid-cols-2 md:grid-cols-4 gap-1">
-        {[ASSETS.panini1, ASSETS.panini2, ASSETS.panini3, ASSETS.panini4].map((src, i) => (
+        {allImages.map((src, i) => (
           <div key={i} className="img-reveal aspect-square">
-            <img src={src} alt={`Panini ${i + 1}`} className="w-full h-full object-cover" />
+            <img src={src} alt={`Amigos food ${i + 1}`} className="w-full h-full object-cover" />
           </div>
         ))}
       </div>
