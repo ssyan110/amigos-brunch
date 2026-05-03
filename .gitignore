@@ -1,0 +1,32 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.*
+
+# Next.js
+.next/
+out/
+build/
+
+# Misc
+.DS_Store
+*.pem
+.env*
+.vercel
+
+# Debug
+npm-debug.log*
+yarn-debug.log*
+
+# TypeScript
+*.tsbuildinfo
+next-env.d.ts
+
+# IDE
+.vscode/
+
+# Local skills (large binary assets, not needed for deployment)
+.kiro/
+
+# Reference files (source PDFs/images, not deployed)
+reference/

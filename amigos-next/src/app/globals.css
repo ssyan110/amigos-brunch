@@ -1,0 +1,52 @@
+@import "tailwindcss";
+
+@theme inline {
+  --font-sans: var(--font-body);
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+:root {
+  --cream: #FAF8F4;
+  --warm-white: #FFFCF7;
+  --espresso: #2C2420;
+  --muted: #8A7E72;
+  --terracotta: #C0613A;
+  --terracotta-light: #D4845F;
+  --sand: #E8DFD2;
+  --linen: #F3EDE4;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--cream);
+  color: var(--espresso);
+  font-family: var(--font-body), -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background-color: var(--terracotta);
+  color: white;
+}
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Editorial image hover */
+.img-reveal {
+  overflow: hidden;
+}
+.img-reveal img {
+  transition: transform 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.img-reveal:hover img {
+  transform: scale(1.04);
+}
