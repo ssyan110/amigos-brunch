@@ -1117,7 +1117,7 @@ function StickyMobileCTA({ lang }: { lang: "zh" | "en" }) {
   if (!visible) return null;
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-50 md:hidden bg-[var(--cream)]/95 backdrop-blur-md border-t border-[var(--sand)] px-4 py-3 safe-bottom">
+    <div className="mobile-sticky-shell safe-bottom fixed z-50 rounded-[28px] border border-[var(--sand)] bg-[var(--warm-white)]/96 px-3 py-3 shadow-[0_18px_45px_rgba(44,36,32,0.16)] backdrop-blur-md md:hidden">
       <div className="flex gap-2">
         <ReservationPicker
           lang={lang}
@@ -1150,7 +1150,7 @@ export default function AmigosBrunchCafeWebsite() {
   const [lang, setLang] = useState<"zh" | "en">("zh");
 
   return (
-    <div className="min-h-screen">
+    <div className="mobile-sticky-offset min-h-screen">
       <Header lang={lang} setLang={setLang} />
       <Hero lang={lang} />
       <TrustBar lang={lang} />
