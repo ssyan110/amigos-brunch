@@ -332,16 +332,9 @@ export const CATERING_PACKAGES = [
   },
   {
     id: "party",
-    zh: "派對拼盤",
+    zh: "派對餐盒",
     en: "Party Platter",
-    descZh: "20 人份起，帕里尼切片拼盤搭配多款配菜，適合部門聚餐與慶祝活動。",
+    descZh: "20 人份起，帕里尼切片拼盤搭配多款配菜，適合部門聚餐與慶祝。",
     descEn: "Min. 20 pax. Sliced panini platters with sides. Great for team celebrations.",
-  },
-  {
-    id: "event",
-    zh: "活動外燴",
-    en: "Event Catering",
-    descZh: "50 人以上客製化菜單，含現場佈置與服務人員，適合企業活動與大型聚會。",
-    descEn: "50+ pax custom menu with on-site setup and service staff. Ideal for corporate events.",
   },
 ];

@@ -55,8 +55,8 @@ function Hero({ lang }: { lang: "zh" | "en" }) {
           </h1>
           <p className="mt-6 text-white/65 text-base md:text-lg max-w-xl leading-relaxed font-light">
             {lang === "zh"
-              ? "以義式帕里尼為招牌，結合早午餐與咖啡。朋友相聚、公司聚餐、活動外燴——我們都準備好了。"
-              : "Signature Italian panini, brunch plates, and coffee. Friends gathering, corporate meals, event catering — we're ready."}
+              ? "以義式帕里尼為招牌，結合早午餐與咖啡。朋友相聚、公司聚餐——我們都準備好了。"
+              : "Signature Italian panini, brunch plates, and coffee. Friends gathering, corporate meals — we're ready."}
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
             <a
@@ -69,7 +69,7 @@ function Hero({ lang }: { lang: "zh" | "en" }) {
               href="#catering"
               className="rounded-full border border-white/40 px-7 py-3.5 text-[13px] font-semibold text-white tracking-wide hover:bg-white/10 transition-colors"
             >
-              {lang === "zh" ? "企業外燴方案" : "Catering for Teams"}
+              {lang === "zh" ? "團體訂餐方案" : "Group Orders"}
             </a>
           </div>
 
@@ -139,7 +139,7 @@ function Header({
           {[
             { href: "#story", zh: "品牌故事", en: "Story" },
             { href: "#menu", zh: "菜單", en: "Menu" },
-            { href: "#catering", zh: "企業外燴", en: "Catering" },
+            { href: "#catering", zh: "團體訂餐", en: "Group Orders" },
             { href: "#visit", zh: "門市資訊", en: "Visit" },
           ].map((link) => (
             <a
@@ -199,7 +199,7 @@ function Header({
         <div className="md:hidden bg-[var(--cream)] border-t border-[var(--sand)] px-6 py-6 space-y-4 font-[family-name:var(--font-zh)]">
           <a href="#story" onClick={() => setMobileOpen(false)} className="block text-lg">品牌故事</a>
           <a href="#menu" onClick={() => setMobileOpen(false)} className="block text-lg">菜單</a>
-          <a href="#catering" onClick={() => setMobileOpen(false)} className="block text-lg">企業外燴</a>
+          <a href="#catering" onClick={() => setMobileOpen(false)} className="block text-lg">團體訂餐</a>
           <a href="#visit" onClick={() => setMobileOpen(false)} className="block text-lg">門市資訊</a>
           <a href="#reserve" onClick={() => setMobileOpen(false)} className="inline-block mt-2 rounded-full bg-[var(--terracotta)] px-6 py-3 text-white text-sm">
             立即訂位
@@ -551,7 +551,7 @@ function Catering({ lang }: { lang: "zh" | "en" }) {
           {/* Left: messaging */}
           <div>
             <p className="text-[11px] uppercase tracking-[0.35em] text-[var(--terracotta)] mb-4 font-semibold">
-              {lang === "zh" ? "企業外燴 & 團體訂餐" : "Corporate Catering & Group Orders"}
+              {lang === "zh" ? "團體訂餐" : "Group Orders"}
             </p>
             <h2 className="font-[family-name:var(--font-display)] text-4xl md:text-5xl tracking-tight leading-tight mb-6">
               {lang === "zh" ? (
@@ -565,8 +565,8 @@ function Catering({ lang }: { lang: "zh" | "en" }) {
             <div className="space-y-4 text-[var(--muted)] leading-relaxed font-[family-name:var(--font-zh)]">
               <p>
                 {lang === "zh"
-                  ? "公司會議、部門聚餐、開幕活動、員工福利——Amigos提供客製化的外燴方案。每份餐點都和店內品質一致，新鮮手作。"
-                  : "Team meetings, department lunches, grand openings, employee perks — Amigos offers catering from 10 to 200+ guests. Every dish matches our in-store quality, made fresh and delivered."}
+                  ? "公司會議、部門聚餐、員工福利——Amigos 提供客製化的團體訂餐方案。每份餐點都和店內品質一致，新鮮手作。"
+                  : "Team meetings, department lunches, employee perks — Amigos offers group catering. Every dish matches our in-store quality, made fresh and delivered."}
               </p>
               <p>
                 {lang === "zh"
@@ -804,7 +804,7 @@ function Footer({ lang }: { lang: "zh" | "en" }) {
               {lang === "zh" ? "菜單" : "Menu"}
             </a>
             <a href="#catering" className="hover:text-[var(--espresso)] transition-colors font-[family-name:var(--font-zh)]">
-              {lang === "zh" ? "企業外燴" : "Catering"}
+              {lang === "zh" ? "團體訂餐" : "Group Orders"}
             </a>
             <a href="https://www.facebook.com/amigosyan/photos" target="_blank" rel="noopener noreferrer" className="hover:text-[var(--espresso)] transition-colors">
               Facebook
