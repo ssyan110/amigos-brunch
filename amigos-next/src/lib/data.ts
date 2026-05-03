@@ -22,6 +22,7 @@ export type MenuItem = {
   en: string;
   price: number;
   limited?: boolean;
+  popular?: boolean;
 };
 
 export type MenuSubGroup = {
@@ -49,7 +50,7 @@ export const FULL_MENU: MenuCategory[] = [
       en: "All paninis served with fries. Swap for salad or fruit. +$30 for ciabatta.",
     },
     items: [
-      { zh: "剝皮辣椒雞", en: "Peeled chili pepper chicken", price: 105 },
+      { zh: "剝皮辣椒雞", en: "Peeled chili pepper chicken", price: 105, popular: true },
       { zh: "青醬菌菇煎蛋", en: "Pesto mushroom & egg", price: 95 },
       { zh: "花生煎蛋", en: "Peanut butter chicken & egg", price: 115 },
       { zh: "莫扎瑞拉羅勒番茄", en: "Cheesy basil & tomato", price: 85 },
@@ -59,14 +60,14 @@ export const FULL_MENU: MenuCategory[] = [
       { zh: "馬鈴薯煎蛋", en: "Potato egg", price: 90 },
       { zh: "香煎培根花生蛋", en: "Bacon egg with peanut sauce", price: 100 },
       { zh: "蜜地瓜火腿蛋", en: "Ham & egg with smashed sweet potato", price: 100 },
-      { zh: "招牌烤肉（辣）", en: "Spicy barbecue pork", price: 105 },
+      { zh: "招牌烤肉（辣）", en: "Spicy barbecue pork", price: 105, popular: true },
       { zh: "泰式打拋豬（辣）", en: "Thai basil chili pork", price: 95 },
       { zh: "羅勒雞肉", en: "Basil Chicken", price: 105 },
       { zh: "蜂蜜芥末", en: "Honey mustard", price: 105 },
       { zh: "莎莎", en: "Home-made salsa", price: 105 },
       { zh: "洋蔥雞柳", en: "Onion chicken fillet", price: 105 },
-      { zh: "經典牛肉", en: "Classic beef", price: 115 },
-      { zh: "嘉年華派對", en: "Carnival party", price: 145 },
+      { zh: "經典牛肉", en: "Classic beef", price: 115, popular: true },
+      { zh: "嘉年華派對", en: "Carnival party", price: 145, popular: true },
       { zh: "洋蔥鮪魚", en: "Tuna with onion", price: 90 },
     ],
   },
@@ -122,7 +123,7 @@ export const FULL_MENU: MenuCategory[] = [
       { zh: "法國吐司佐蜂蜜餐", en: "Honey french toast combo", price: 170 },
       { zh: "檸檬蛋黃果醬厚片", en: "Lemon curd toast combo", price: 170 },
       { zh: "帶骨德式香腸餐", en: "German sausage on a bone stick combo", price: 170 },
-      { zh: "香煎雞腿排餐", en: "Pan-fried chicken thigh steak combo", price: 235 },
+      { zh: "香煎雞腿排餐", en: "Pan-fried chicken thigh steak combo", price: 235, popular: true },
     ],
   },
   {

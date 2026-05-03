@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect, useCallback } from "react";
 import { ASSETS, FULL_MENU, HERO_SLIDES, CATERING_PACKAGES } from "@/lib/data";
-import type { MenuCategory, MenuItem, MenuSubGroup } from "@/lib/data";
+import type { MenuCategory, MenuItem } from "@/lib/data";
 
 /* ─── Auto-sliding Hero ─── */
 function Hero({ lang }: { lang: "zh" | "en" }) {
@@ -153,10 +153,10 @@ function Header({
             </a>
           ))}
           <a
-            href="#reserve"
+            href="tel:08-766-9690"
             className="ml-2 rounded-full bg-[var(--terracotta)] px-5 py-2.5 text-white text-[12px] tracking-wider uppercase hover:bg-[var(--terracotta-light)] transition-colors"
           >
-            {lang === "zh" ? "訂位" : "Reserve"}
+            {lang === "zh" ? "訂位" : "Call"}
           </a>
         </nav>
 
@@ -202,7 +202,7 @@ function Header({
           <a href="#catering" onClick={() => setMobileOpen(false)} className="block text-lg">團體訂餐</a>
           <a href="#visit" onClick={() => setMobileOpen(false)} className="block text-lg">門市資訊</a>
           <a href="#reserve" onClick={() => setMobileOpen(false)} className="inline-block mt-2 rounded-full bg-[var(--terracotta)] px-6 py-3 text-white text-sm">
-            立即訂位
+            來電訂位
           </a>
         </div>
       )}
@@ -214,26 +214,38 @@ function Header({
 /* ─── Social proof bar ─── */
 function TrustBar({ lang }: { lang: "zh" | "en" }) {
   const stats = [
-    { num: "10", zh: "年在地經營", en: "Years in Pingtung" },
-    { num: "20+", zh: "款帕里尼口味", en: "Panini Varieties" },
-    { num: "4.2★", zh: "Google 評分", en: "Google Rating" },
-    { num: "100%", zh: "手作美味", en: "Hand-made craft" },
+    { num: "10+", zh: "年在地經營", en: "Years in Pingtung", href: undefined },
+    { num: "20+", zh: "款帕里尼口味", en: "Panini Varieties", href: undefined },
+    { num: "4.2★", zh: "Google 評分", en: "Google Rating", href: "https://maps.app.goo.gl/DPaBLB2GdnHyErC1A" },
+    { num: "100%", zh: "手作美味", en: "Handcrafted", href: undefined },
   ];
 
   return (
     <section className="border-y border-[var(--sand)] bg-[var(--linen)]">
       <div className="mx-auto max-w-6xl px-6 py-10">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-          {stats.map((s) => (
-            <div key={s.num}>
-              <p className="font-[family-name:var(--font-accent)] text-3xl md:text-4xl text-[var(--terracotta)]">
-                {s.num}
-              </p>
-              <p className="mt-1 text-[12px] uppercase tracking-[0.15em] text-[var(--muted)] font-medium">
-                {lang === "zh" ? s.zh : s.en}
-              </p>
-            </div>
-          ))}
+          {stats.map((s) => {
+            const inner = (
+              <>
+                <p className="font-[family-name:var(--font-accent)] text-3xl md:text-4xl text-[var(--terracotta)]">
+                  {s.num}
+                </p>
+                <p className="mt-1 text-[12px] uppercase tracking-[0.15em] text-[var(--muted)] font-medium">
+                  {lang === "zh" ? s.zh : s.en}
+                </p>
+              </>
+            );
+            return s.href ? (
+              <a key={s.num} href={s.href} target="_blank" rel="noopener noreferrer" className="group hover:opacity-80 transition-opacity">
+                {inner}
+                <p className="mt-1 text-[10px] text-[var(--terracotta)] opacity-0 group-hover:opacity-100 transition-opacity">
+                  {lang === "zh" ? "查看評論 →" : "See reviews →"}
+                </p>
+              </a>
+            ) : (
+              <div key={s.num}>{inner}</div>
+            );
+          })}
         </div>
       </div>
     </section>
@@ -339,6 +351,11 @@ function MenuItemRow({ item, lang }: { item: MenuItem; lang: "zh" | "en" }) {
               {lang === "zh" ? "限定" : "Limited"}
             </span>
           )}
+          {item.popular && (
+            <span className="ml-2 inline-block text-[10px] uppercase tracking-wider bg-amber-50 text-amber-700 px-2 py-0.5 rounded-full font-semibold">
+              {lang === "zh" ? "人氣推薦" : "Popular"}
+            </span>
+          )}
         </div>
         <span className="shrink-0 border-b border-dotted border-[var(--sand)] flex-1 max-w-[80px] mx-2 mb-1 hidden sm:block" />
         <span className="shrink-0 font-[family-name:var(--font-accent)] text-base text-[var(--terracotta)] tabular-nums">
@@ -430,12 +447,19 @@ function MenuAccordion({
         }`}
       >
         <div className="px-5 py-4 border-t border-[var(--sand)]/50">
-          {/* Category note */}
-          {category.note && (
+          {/* Category note — panini gets a banner, others get italic text */}
+          {category.note && category.id === "panini-savoury" ? (
+            <div className="mb-4 rounded-xl bg-amber-50 px-4 py-3 flex items-center gap-2">
+              <span className="text-lg">🍟</span>
+              <p className="text-[13px] text-amber-800 font-medium font-[family-name:var(--font-zh)]">
+                {lang === "zh" ? category.note.zh : category.note.en}
+              </p>
+            </div>
+          ) : category.note ? (
             <p className="text-[13px] text-[var(--muted)] mb-4 italic font-[family-name:var(--font-zh)]">
               {lang === "zh" ? category.note.zh : category.note.en}
             </p>
-          )}
+          ) : null}
 
           {/* Flat items */}
           {category.items && (
@@ -611,7 +635,7 @@ function Catering({ lang }: { lang: "zh" | "en" }) {
                 {lang === "zh" ? "來電洽詢 (08) 766-9690" : "Call (08) 766-9690"}
               </a>
               <a
-                href="https://www.facebook.com/amigosyan/photos"
+                href="https://www.facebook.com/amigosyan"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="rounded-full border border-[var(--espresso)] px-7 py-3.5 text-[13px] font-semibold text-[var(--espresso)] tracking-wide hover:bg-[var(--espresso)] hover:text-white transition-colors"
@@ -634,9 +658,9 @@ function Catering({ lang }: { lang: "zh" | "en" }) {
                 <p className="text-sm text-[var(--muted)] leading-relaxed font-[family-name:var(--font-zh)]">
                   {lang === "zh" ? pkg.descZh : pkg.descEn}
                 </p>
-                <p className="mt-3 text-[12px] font-semibold text-[var(--terracotta)] uppercase tracking-wider">
-                  {lang === "zh" ? "來電洽詢報價" : "Call to request for proposal"}
-                </p>
+                <a href="tel:08-766-9690" className="mt-3 inline-block text-[12px] font-semibold text-[var(--terracotta)] uppercase tracking-wider hover:text-[var(--terracotta-light)] transition-colors">
+                  {lang === "zh" ? "來電洽詢報價 →" : "Call for pricing →"}
+                </a>
               </div>
             ))}
 
@@ -727,15 +751,15 @@ function Visit({ lang }: { lang: "zh" | "en" }) {
                 <p className="text-[11px] uppercase tracking-[0.2em] text-[var(--espresso)] font-semibold mb-1">
                   {lang === "zh" ? "電話" : "Phone"}
                 </p>
-                <p className="font-[family-name:var(--font-accent)] text-xl text-[var(--espresso)]">
+                <a href="tel:08-766-9690" className="font-[family-name:var(--font-accent)] text-xl text-[var(--espresso)] hover:text-[var(--terracotta)] transition-colors">
                   (08) 766-9690
-                </p>
+                </a>
               </div>
             </div>
 
             <div className="mt-10 flex gap-3">
               <a
-                href="https://www.facebook.com/amigosyan/photos"
+                href="https://www.facebook.com/amigosyan"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center rounded-full border border-[var(--espresso)] px-5 py-2.5 text-[12px] font-semibold tracking-wider uppercase text-[var(--espresso)] hover:bg-[var(--espresso)] hover:text-white transition-colors"
@@ -833,7 +857,7 @@ function Footer({ lang }: { lang: "zh" | "en" }) {
             <a href="#catering" className="hover:text-[var(--espresso)] transition-colors font-[family-name:var(--font-zh)]">
               {lang === "zh" ? "團體訂餐" : "Group Orders"}
             </a>
-            <a href="https://www.facebook.com/amigosyan/photos" target="_blank" rel="noopener noreferrer" className="hover:text-[var(--espresso)] transition-colors">
+            <a href="https://www.facebook.com/amigosyan" target="_blank" rel="noopener noreferrer" className="hover:text-[var(--espresso)] transition-colors">
               Facebook
             </a>
             <a href="tel:08-766-9690" className="hover:text-[var(--espresso)] transition-colors">
@@ -846,6 +870,40 @@ function Footer({ lang }: { lang: "zh" | "en" }) {
         </div>
       </div>
     </footer>
+  );
+}
+
+/* ─── Sticky mobile CTA ─── */
+function StickyMobileCTA({ lang }: { lang: "zh" | "en" }) {
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setVisible(window.scrollY > 600);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  if (!visible) return null;
+
+  return (
+    <div className="fixed bottom-0 left-0 right-0 z-50 md:hidden bg-[var(--cream)]/95 backdrop-blur-md border-t border-[var(--sand)] px-4 py-3 safe-bottom">
+      <div className="flex gap-2">
+        <a
+          href="tel:08-766-9690"
+          className="flex-1 flex items-center justify-center gap-2 rounded-full bg-[var(--terracotta)] py-3 text-white text-[13px] font-semibold tracking-wide"
+        >
+          📞 {lang === "zh" ? "立即來電" : "Call Now"}
+        </a>
+        <a
+          href="https://maps.app.goo.gl/DPaBLB2GdnHyErC1A"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex-1 flex items-center justify-center gap-2 rounded-full border border-[var(--espresso)] py-3 text-[var(--espresso)] text-[13px] font-semibold tracking-wide"
+        >
+          📍 {lang === "zh" ? "導航" : "Directions"}
+        </a>
+      </div>
+    </div>
   );
 }
 
@@ -866,6 +924,7 @@ export default function AmigosBrunchCafeWebsite() {
       <Visit lang={lang} />
       <Reserve lang={lang} />
       <Footer lang={lang} />
+      <StickyMobileCTA lang={lang} />
     </div>
   );
 }
