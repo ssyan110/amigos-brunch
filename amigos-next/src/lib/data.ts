@@ -323,7 +323,7 @@ export const FULL_MENU: MenuCategory[] = [
   },
 ];
 
-/* ─── Gallery slideshow images (up to 20 for Google Business Profile) ─── */
+/* ─── Gallery slideshow images (Google Business Profile photos) ─── */
 export type GalleryImage = {
   src: string;
   zh: string;
@@ -331,28 +331,26 @@ export type GalleryImage = {
 };
 
 export const GALLERY_IMAGES: GalleryImage[] = [
-  // Local assets first
-  { src: "/panini1.png", zh: "招牌帕里尼，酥脆金黃", en: "Signature panini, golden & crispy" },
-  { src: "/panini2.png", zh: "新鮮食材，手工醬料", en: "Fresh ingredients, house-made sauces" },
-  { src: "/panini3.png", zh: "20+ 口味任你選", en: "20+ flavors to choose from" },
-  { src: "/panini4.png", zh: "週末療癒系早午餐", en: "Weekend brunch worth savoring" },
-  { src: "/food1.png", zh: "朋友聚餐的最佳選擇", en: "Perfect for gathering with friends" },
-  { src: "/food2.png", zh: "精緻早午餐拼盤", en: "Curated brunch combo" },
-  { src: "/food3.png", zh: "溫暖明亮的用餐空間", en: "Warm and bright dining space" },
-  { src: "/food4.png", zh: "團體訂餐，品質不打折", en: "Group orders, same quality" },
-  // Unsplash high-quality food photography
-  { src: "https://images.unsplash.com/photo-1528735602780-2552fd46c7af?w=800&q=80&auto=format&fit=crop", zh: "熱壓帕里尼特寫", en: "Hot-pressed panini close-up" },
-  { src: "https://images.unsplash.com/photo-1484723091739-30a097e8f929?w=800&q=80&auto=format&fit=crop", zh: "法式吐司佐新鮮水果", en: "French toast with fresh fruit" },
-  { src: "https://images.unsplash.com/photo-1525351484163-7529414344d8?w=800&q=80&auto=format&fit=crop", zh: "經典早午餐拼盤", en: "Classic brunch platter" },
-  { src: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800&q=80&auto=format&fit=crop", zh: "精心擺盤的美味料理", en: "Beautifully plated dishes" },
-  { src: "https://images.unsplash.com/photo-1476224203421-9ac39bcb3327?w=800&q=80&auto=format&fit=crop", zh: "新鮮沙拉與輕食", en: "Fresh salads & light bites" },
-  { src: "https://images.unsplash.com/photo-1495214783159-3503fd1b572d?w=800&q=80&auto=format&fit=crop", zh: "手沖咖啡，香氣四溢", en: "Hand-brewed coffee aroma" },
-  { src: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&q=80&auto=format&fit=crop", zh: "溫馨的用餐氛圍", en: "Cozy dining atmosphere" },
-  { src: "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=800&q=80&auto=format&fit=crop", zh: "現烤義式料理", en: "Freshly baked Italian fare" },
-  { src: "https://images.unsplash.com/photo-1482049016688-2d3e1b311543?w=800&q=80&auto=format&fit=crop", zh: "色彩繽紛的早午餐", en: "Colorful brunch spread" },
-  { src: "https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=800&q=80&auto=format&fit=crop", zh: "鬆餅與甜點", en: "Pancakes & sweet treats" },
-  { src: "https://images.unsplash.com/photo-1551024506-0bccd828d307?w=800&q=80&auto=format&fit=crop", zh: "拿鐵拉花藝術", en: "Latte art perfection" },
-  { src: "https://images.unsplash.com/photo-1490818387583-1baba5e638af?w=800&q=80&auto=format&fit=crop", zh: "健康輕食選擇", en: "Healthy light options" },
+  { src: "/gallery/IMG_2022.jpg", zh: "Amigos 店內實拍", en: "Amigos in-store photo" },
+  { src: "/gallery/IMG_2023.jpg", zh: "招牌帕里尼", en: "Signature panini" },
+  { src: "/gallery/IMG_2024.jpg", zh: "新鮮現做料理", en: "Freshly prepared dishes" },
+  { src: "/gallery/IMG_2025.jpg", zh: "美味早午餐", en: "Delicious brunch" },
+  { src: "/gallery/IMG_2026.jpg", zh: "精緻擺盤", en: "Beautiful plating" },
+  { src: "/gallery/IMG_2027.jpg", zh: "溫馨用餐空間", en: "Cozy dining space" },
+  { src: "/gallery/IMG_2028.jpg", zh: "人氣餐點", en: "Popular dishes" },
+  { src: "/gallery/IMG_2029.jpg", zh: "手作醬料搭配", en: "House-made sauce pairing" },
+  { src: "/gallery/IMG_2030.jpg", zh: "朋友聚餐首選", en: "Perfect for friends" },
+  { src: "/gallery/IMG_2031.jpg", zh: "每日新鮮食材", en: "Daily fresh ingredients" },
+  { src: "/gallery/IMG_2032.jpg", zh: "經典口味", en: "Classic flavors" },
+  { src: "/gallery/IMG_2033.jpg", zh: "屏東在地十年", en: "10 years in Pingtung" },
+  { src: "/gallery/IMG_2034.jpg", zh: "酥脆金黃外皮", en: "Golden crispy crust" },
+  { src: "/gallery/IMG_2035.jpg", zh: "滿滿餡料", en: "Overflowing fillings" },
+  { src: "/gallery/IMG_2036.jpg", zh: "輕食沙拉", en: "Fresh salad" },
+  { src: "/gallery/IMG_2037.jpg", zh: "咖啡與飲品", en: "Coffee & drinks" },
+  { src: "/gallery/IMG_2038.jpg", zh: "義式風味", en: "Italian flavors" },
+  { src: "/gallery/IMG_2039.jpg", zh: "週末早午餐", en: "Weekend brunch" },
+  { src: "/gallery/IMG_2040.jpg", zh: "團體訂餐", en: "Group orders" },
+  { src: "/gallery/IMG_2041.jpg", zh: "用心料理每一份", en: "Made with care" },
 ];
 
 export const CATERING_PACKAGES = [
