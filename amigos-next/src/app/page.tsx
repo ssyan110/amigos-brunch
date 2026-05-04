@@ -450,7 +450,7 @@ function SignatureHighlight({ lang }: { lang: "zh" | "en" }) {
         </h2>
         <p className="mt-6 text-white/55 max-w-lg mx-auto leading-relaxed font-[family-name:var(--font-zh)]">
           {lang === "zh"
-            ? "外皮烤到金黃酥脆，裡面是融化的起司、新鮮蔬菜、和我們自己調的醬料。從經典的「經典牛肉」到招牌辣味的「招牌烤肉」，20 多種口味讓您選擇。"
+            ? "外皮烤到金黃酥脆，裡面是融化的起司、新鮮蔬菜、和我們自己調的醬料。<br />從經典的「經典牛肉」到招牌辣味的「招牌烤肉」，20 多種口味讓您選擇。"
             : "Golden-brown crust on the outside, melted cheese and fresh-cut vegetables on the inside, finished with our house-made sauce. From the hearty \"Classic Beef\" to the spicy-sweet \"BBQ Pork,\" we've got 20+ flavors worth exploring."}
         </p>
         <a
