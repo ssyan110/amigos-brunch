@@ -426,44 +426,6 @@ function Story({ lang }: { lang: "zh" | "en" }) {
   );
 }
 
-/* ─── Signature panini highlight ─── */
-function SignatureHighlight({ lang }: { lang: "zh" | "en" }) {
-  return (
-    <section className="relative overflow-hidden py-24 md:py-32 bg-[var(--espresso)]">
-      <img
-        src={ASSETS.panini3}
-        alt="Signature panini"
-        className="absolute inset-0 w-full h-full object-cover opacity-30"
-      />
-      <div className="relative z-10 mx-auto max-w-6xl px-6 text-center">
-        <p className="text-[11px] uppercase tracking-[0.4em] text-[var(--terracotta-light)] mb-5 font-medium">
-          {lang === "zh" ? "招牌主角" : "Our Signature"}
-        </p>
-        <h2 className="font-[family-name:var(--font-display)] text-white text-4xl md:text-6xl lg:text-7xl tracking-tight leading-tight max-w-3xl mx-auto">
-          {lang === "zh" ? (
-            <span className="font-[family-name:var(--font-zh)]">
-              香脆義式帕里尼<br />一口咬下<br />就有咔滋咔滋的幸福口感
-            </span>
-          ) : (
-            <>Italian Panini<br />Golden crust. Every bite crunches.</>
-          )}
-        </h2>
-        <p className="mt-6 text-white/55 max-w-lg mx-auto leading-relaxed font-[family-name:var(--font-zh)]">
-          {lang === "zh"
-            ? "外皮烤到金黃酥脆，裡面是融化的起司、新鮮蔬菜、和我們自己調的醬料。<br />從經典的「經典牛肉」到招牌辣味的「招牌烤肉」，20 多種口味讓您選擇。"
-            : "Golden-brown crust on the outside, melted cheese and fresh-cut vegetables on the inside, finished with our house-made sauce. From the hearty \"Classic Beef\" to the spicy-sweet \"BBQ Pork,\" we've got 20+ flavors worth exploring."}
-        </p>
-        <a
-          href="#menu"
-          className="inline-block mt-8 rounded-full bg-[var(--terracotta)] px-8 py-3.5 text-[13px] font-semibold text-white tracking-wide hover:bg-[var(--terracotta-light)] transition-colors"
-        >
-          {lang === "zh" ? "查看完整菜單" : "See Full Menu"}
-        </a>
-      </div>
-    </section>
-  );
-}
-
 /* ─── Menu item row ─── */
 function MenuItemRow({ item, lang }: { item: MenuItem; lang: "zh" | "en" }) {
   return (
@@ -938,9 +900,9 @@ function Gallery({ lang }: { lang: "zh" | "en" }) {
             </p>
             <h2 className="font-[family-name:var(--font-display)] text-white text-3xl md:text-4xl tracking-tight leading-tight">
               {lang === "zh" ? (
-                <span className="font-[family-name:var(--font-zh)]">每一道都值得拍照打卡</span>
+                <span className="font-[family-name:var(--font-zh)]">每一道都值得慢慢品味</span>
               ) : (
-                "Every dish is photo-worthy"
+                "Every dish is worth tasting"
               )}
             </h2>
           </div>
@@ -1101,7 +1063,7 @@ function Visit({ lang }: { lang: "zh" | "en" }) {
           <div className="md:col-span-3">
             <div className="rounded-2xl aspect-[4/3] overflow-hidden">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d917.5!2d120.488!3d22.6727!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x346e1b1b1b1b1b1b%3A0x0!2sAmigos+%E6%97%A9%E5%8D%88%E9%A4%90!5e0!3m2!1szh-TW!2stw!4v1714800000000!5m2!1szh-TW!2stw"
+                src="https://maps.google.com/maps?q=Amigos%E6%97%A9%E5%8D%88%E9%A4%90+%E5%B1%8F%E6%9D%B1%E5%B8%82%E6%BF%9F%E5%8D%97%E8%A1%9714%E8%99%9F&t=&z=17&ie=UTF8&iwloc=&output=embed"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
@@ -1135,7 +1097,7 @@ function Reserve({ lang }: { lang: "zh" | "en" }) {
             <h2 className="font-[family-name:var(--font-display)] text-white text-4xl md:text-6xl tracking-tight leading-tight max-w-2xl mx-auto">
               {lang === "zh" ? (
                 <span className="font-[family-name:var(--font-zh)]">
-                  現烤的酥脆帕里尼出爐嘍！，<br />您準備好了嗎？
+                  現烤酥脆帕里尼出爐！<br />您準備好了嗎？
                 </span>
               ) : (
                 <>Hot-pressed crunchy panini is waiting for you.<br />Ready?.</>
@@ -1302,9 +1264,8 @@ export default function AmigosBrunchCafeWebsite() {
       <Hero lang={lang} />
       <TrustBar lang={lang} />
       <Story lang={lang} />
-      <SignatureHighlight lang={lang} />
-      <MenuSection lang={lang} />
       <Gallery lang={lang} />
+      <MenuSection lang={lang} />
       <SocialProof lang={lang} />
       <Catering lang={lang} />
       <Visit lang={lang} />
