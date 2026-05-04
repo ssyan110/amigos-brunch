@@ -71,3 +71,12 @@ html {
     padding-bottom: 0;
   }
 }
+
+/* Hide scrollbar for gallery carousel */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

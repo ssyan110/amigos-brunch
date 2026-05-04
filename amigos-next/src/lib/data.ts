@@ -323,6 +323,38 @@ export const FULL_MENU: MenuCategory[] = [
   },
 ];
 
+/* ─── Gallery slideshow images (up to 20 for Google Business Profile) ─── */
+export type GalleryImage = {
+  src: string;
+  zh: string;
+  en: string;
+};
+
+export const GALLERY_IMAGES: GalleryImage[] = [
+  // Local assets first
+  { src: "/panini1.png", zh: "招牌帕里尼，酥脆金黃", en: "Signature panini, golden & crispy" },
+  { src: "/panini2.png", zh: "新鮮食材，手工醬料", en: "Fresh ingredients, house-made sauces" },
+  { src: "/panini3.png", zh: "20+ 口味任你選", en: "20+ flavors to choose from" },
+  { src: "/panini4.png", zh: "週末療癒系早午餐", en: "Weekend brunch worth savoring" },
+  { src: "/food1.png", zh: "朋友聚餐的最佳選擇", en: "Perfect for gathering with friends" },
+  { src: "/food2.png", zh: "精緻早午餐拼盤", en: "Curated brunch combo" },
+  { src: "/food3.png", zh: "溫暖明亮的用餐空間", en: "Warm and bright dining space" },
+  { src: "/food4.png", zh: "團體訂餐，品質不打折", en: "Group orders, same quality" },
+  // Unsplash high-quality food photography
+  { src: "https://images.unsplash.com/photo-1528735602780-2552fd46c7af?w=800&q=80&auto=format&fit=crop", zh: "熱壓帕里尼特寫", en: "Hot-pressed panini close-up" },
+  { src: "https://images.unsplash.com/photo-1484723091739-30a097e8f929?w=800&q=80&auto=format&fit=crop", zh: "法式吐司佐新鮮水果", en: "French toast with fresh fruit" },
+  { src: "https://images.unsplash.com/photo-1525351484163-7529414344d8?w=800&q=80&auto=format&fit=crop", zh: "經典早午餐拼盤", en: "Classic brunch platter" },
+  { src: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800&q=80&auto=format&fit=crop", zh: "精心擺盤的美味料理", en: "Beautifully plated dishes" },
+  { src: "https://images.unsplash.com/photo-1476224203421-9ac39bcb3327?w=800&q=80&auto=format&fit=crop", zh: "新鮮沙拉與輕食", en: "Fresh salads & light bites" },
+  { src: "https://images.unsplash.com/photo-1495214783159-3503fd1b572d?w=800&q=80&auto=format&fit=crop", zh: "手沖咖啡，香氣四溢", en: "Hand-brewed coffee aroma" },
+  { src: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&q=80&auto=format&fit=crop", zh: "溫馨的用餐氛圍", en: "Cozy dining atmosphere" },
+  { src: "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=800&q=80&auto=format&fit=crop", zh: "現烤義式料理", en: "Freshly baked Italian fare" },
+  { src: "https://images.unsplash.com/photo-1482049016688-2d3e1b311543?w=800&q=80&auto=format&fit=crop", zh: "色彩繽紛的早午餐", en: "Colorful brunch spread" },
+  { src: "https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=800&q=80&auto=format&fit=crop", zh: "鬆餅與甜點", en: "Pancakes & sweet treats" },
+  { src: "https://images.unsplash.com/photo-1551024506-0bccd828d307?w=800&q=80&auto=format&fit=crop", zh: "拿鐵拉花藝術", en: "Latte art perfection" },
+  { src: "https://images.unsplash.com/photo-1490818387583-1baba5e638af?w=800&q=80&auto=format&fit=crop", zh: "健康輕食選擇", en: "Healthy light options" },
+];
+
 export const CATERING_PACKAGES = [
   {
     id: "meeting",

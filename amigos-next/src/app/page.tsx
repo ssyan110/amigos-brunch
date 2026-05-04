@@ -12,7 +12,7 @@ import {
   UtensilsCrossed,
   X as CloseIcon,
 } from "lucide-react";
-import { ASSETS, FULL_MENU, HERO_SLIDES, CATERING_PACKAGES } from "@/lib/data";
+import { ASSETS, FULL_MENU, HERO_SLIDES, CATERING_PACKAGES, GALLERY_IMAGES } from "@/lib/data";
 import type { MenuCategory, MenuItem } from "@/lib/data";
 
 const PHONE_HREF = "tel:08-766-9690";
@@ -153,7 +153,7 @@ function Hero({ lang }: { lang: "zh" | "en" }) {
           <h1 className="font-[family-name:var(--font-display)] text-white text-5xl md:text-7xl lg:text-[5.5rem] leading-[1.05] tracking-tight max-w-3xl">
             {lang === "zh" ? (
               <span className="font-[family-name:var(--font-zh)]">
-                酥脆、熱烤、滿到溢出來的帕里尼，<br />等你帶朋友來吃
+                香脆熱烤帕里尼，<br />等你帶朋友來享用
               </span>
             ) : (
               <>Crispy, hot-pressed panini<br />overflowing with flavor.</>
@@ -161,8 +161,8 @@ function Hero({ lang }: { lang: "zh" | "en" }) {
           </h1>
           <p className="mt-6 text-white/70 text-base md:text-lg max-w-xl leading-relaxed">
             {lang === "zh"
-              ? "屏東在地十年的帕里尼專門店，20 多種口味每天 7:30 現烤。不管兩個人的早午餐、十個人的聚餐，還是公司團體訂餐，一個地方搞定。"
-              : "10 years in Pingtung. 20+ flavors hot-pressed daily from 7:30 AM. Whether it's brunch for two or catering for twenty — this is your spot."}
+              ? "屏東在地十年的帕里尼專門店，20 多種現烤香脆的滋味。不管兩個人的早午餐、十個人的聚餐，還是公司團體訂餐，一個地方就搞定。"
+              : "10 years in Pingtung. 20+ flavors hot-pressed daily. Whether it's brunch for two or catering for twenty — this is your spot."}
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
             <a
@@ -252,6 +252,7 @@ function Header({
           {[
             { href: "#story", zh: "品牌故事", en: "Story" },
             { href: "#menu", zh: "菜單", en: "Menu" },
+            { href: "#gallery", zh: "相簿", en: "Gallery" },
             { href: "#catering", zh: "團體訂餐", en: "Group Orders" },
             { href: "#visit", zh: "店家資訊", en: "Visit" },
           ].map((link) => (
@@ -315,6 +316,7 @@ function Header({
         <div className="md:hidden bg-[var(--cream)] border-t border-[var(--sand)] px-6 py-6 space-y-4 font-[family-name:var(--font-zh)]">
           <a href="#story" onClick={() => setMobileOpen(false)} className="block text-lg">品牌故事</a>
           <a href="#menu" onClick={() => setMobileOpen(false)} className="block text-lg">菜單</a>
+          <a href="#gallery" onClick={() => setMobileOpen(false)} className="block text-lg">相簿</a>
           <a href="#catering" onClick={() => setMobileOpen(false)} className="block text-lg">團體訂餐</a>
           <a href="#visit" onClick={() => setMobileOpen(false)} className="block text-lg">店家資訊</a>
           <ReservationPicker
@@ -440,7 +442,7 @@ function SignatureHighlight({ lang }: { lang: "zh" | "en" }) {
         <h2 className="font-[family-name:var(--font-display)] text-white text-4xl md:text-6xl lg:text-7xl tracking-tight leading-tight max-w-3xl mx-auto">
           {lang === "zh" ? (
             <span className="font-[family-name:var(--font-zh)]">
-              義式帕里尼<br />外酥內軟，咬下去會喀滋
+              義式帕里尼<br />外酥內軟，咬下去會喀滋喀滋的
             </span>
           ) : (
             <>Italian Panini<br />Golden crust. Every bite crunches.</>
@@ -448,8 +450,8 @@ function SignatureHighlight({ lang }: { lang: "zh" | "en" }) {
         </h2>
         <p className="mt-6 text-white/55 max-w-lg mx-auto leading-relaxed font-[family-name:var(--font-zh)]">
           {lang === "zh"
-            ? "外皮烤到金黃酥脆，裡面是融化的起司、新鮮蔬菜、和我們自己調的醬。從經典的「經典牛肉」到招牌辣味的「招牌烤肉」，20 多種口味等你慢慢吃。第一次來？試試「嘉年華派對」就對了。"
-            : "Golden-brown crust on the outside, melted cheese and fresh-cut vegetables on the inside, finished with our house-made sauce. From the hearty \"Classic Beef\" to the spicy-sweet \"BBQ Pork,\" we've got 20+ flavors worth exploring. First timer? Start with the \"Carnival Party.\""}
+            ? "外皮烤到金黃酥脆，裡面是融化的起司、新鮮蔬菜、和我們自己調的醬料。從經典的「經典牛肉」到招牌辣味的「招牌烤肉」，20 多種口味讓您選擇。"
+            : "Golden-brown crust on the outside, melted cheese and fresh-cut vegetables on the inside, finished with our house-made sauce. From the hearty \"Classic Beef\" to the spicy-sweet \"BBQ Pork,\" we've got 20+ flavors worth exploring."}
         </p>
         <a
           href="#menu"
@@ -816,13 +818,13 @@ function Catering({ lang }: { lang: "zh" | "en" }) {
             <div className="space-y-4 text-[var(--muted)] leading-relaxed font-[family-name:var(--font-zh)]">
               <p>
                 {lang === "zh"
-                  ? "辦公午餐、部門聚餐、生日派對、員工福利——不管幾個人，我們都能準備。每份餐點都和店內品質一致，現做現送，乾淨包裝。"
-                  : "Office lunches, team gatherings, birthday parties, employee perks — no matter the headcount, we've got you covered. Every dish matches our in-store quality, made fresh with clean packaging."}
+                  ? "辦公午餐、部門聚餐、生日派對、員工福利；不管幾個人，我們都能準備。每份餐點都和店內品質一致，現做現送，乾淨包裝。"
+                  : "From office lunches, team gatherings, birthday parties, to employee perks, no matter the headcount, we've got you covered. Every dish matches our in-store quality, made fresh with clean packaging."}
               </p>
               <p>
                 {lang === "zh"
-                  ? "提前 2 天預訂，菜單可依需求客製。想知道怎麼訂？請來電或 Facebook 私訊洽詢。"
-                  : "Book 2 days ahead, and we'll customize the menu to your needs. Want to know how? Call us or send a Facebook message."}
+                  ? "提前 2 天預訂，菜單可依需求客製。詳情來電或 Facebook 私訊洽詢。"
+                  : "Book 2 days ahead, and we'll customize the menu to your needs. Call us or send a Facebook message to request for more details."}
               </p>
             </div>
 
@@ -891,32 +893,136 @@ function Catering({ lang }: { lang: "zh" | "en" }) {
   );
 }
 
-/* ─── Gallery ─── */
+/* ─── Gallery slideshow (auto-sliding, 20 photos for Google Business Profile) ─── */
 function Gallery({ lang }: { lang: "zh" | "en" }) {
-  const allImages = [
-    { src: ASSETS.panini1, zh: "酥脆帕里尼，現點現做", en: "Crispy panini, made to order" },
-    { src: ASSETS.panini2, zh: "新鮮食材，手工醬料", en: "Fresh ingredients, house-made sauces" },
-    { src: ASSETS.panini3, zh: "20+ 口味任你選", en: "20+ flavors to choose from" },
-    { src: ASSETS.panini4, zh: "適合週末慢慢吃的療癒系早午餐", en: "Weekend brunch worth savoring" },
-    { src: ASSETS.food1, zh: "朋友聚餐的最佳選擇", en: "Perfect for gathering with friends" },
-    { src: ASSETS.food2, zh: "精緻早午餐拼盤", en: "Curated brunch combo" },
-    { src: ASSETS.food3, zh: "溫暖明亮的用餐空間", en: "Warm and bright dining space" },
-    { src: ASSETS.food4, zh: "團體訂餐，品質不打折", en: "Group orders, same quality" },
-  ];
+  const [current, setCurrent] = useState(0);
+  const [paused, setPaused] = useState(false);
+  const trackRef = useRef<HTMLDivElement | null>(null);
+  const total = GALLERY_IMAGES.length;
+
+  // Auto-advance every 3.5s
+  useEffect(() => {
+    if (paused) return;
+    const timer = setInterval(() => {
+      setCurrent((prev) => (prev + 1) % total);
+    }, 3500);
+    return () => clearInterval(timer);
+  }, [paused, total]);
+
+  // Smooth-scroll the track when current changes
+  useEffect(() => {
+    if (!trackRef.current) return;
+    const track = trackRef.current;
+    const card = track.children[current] as HTMLElement | undefined;
+    if (!card) return;
+    const scrollLeft = card.offsetLeft - track.offsetLeft - (track.clientWidth / 2 - card.clientWidth / 2);
+    track.scrollTo({ left: scrollLeft, behavior: "smooth" });
+  }, [current]);
+
+  const goTo = (idx: number) => setCurrent(idx);
+  const goPrev = () => setCurrent((prev) => (prev - 1 + total) % total);
+  const goNext = () => setCurrent((prev) => (prev + 1) % total);
 
   return (
-    <section className="overflow-hidden">
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-1">
-        {allImages.map((img, i) => (
-          <div key={i} className="img-reveal aspect-square relative group">
-            <img src={img.src} alt={lang === "zh" ? img.zh : img.en} className="w-full h-full object-cover" />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-              <p className="text-white text-[13px] font-medium font-[family-name:var(--font-zh)]">
+    <section
+      id="gallery"
+      className="py-20 md:py-28 bg-[var(--espresso)] overflow-hidden"
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+    >
+      <div className="mx-auto max-w-6xl px-6 mb-10">
+        <div className="flex items-end justify-between gap-4">
+          <div>
+            <p className="text-[11px] uppercase tracking-[0.35em] text-[var(--terracotta-light)] mb-4 font-semibold">
+              {lang === "zh" ? "美食相簿" : "Gallery"}
+            </p>
+            <h2 className="font-[family-name:var(--font-display)] text-white text-3xl md:text-4xl tracking-tight leading-tight">
+              {lang === "zh" ? (
+                <span className="font-[family-name:var(--font-zh)]">每一道都值得拍照打卡</span>
+              ) : (
+                "Every dish is photo-worthy"
+              )}
+            </h2>
+          </div>
+          {/* Desktop nav arrows */}
+          <div className="hidden md:flex items-center gap-2">
+            <button
+              onClick={goPrev}
+              aria-label="Previous photo"
+              className="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 text-white/60 hover:border-white/50 hover:text-white transition-colors"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+            </button>
+            <button
+              onClick={goNext}
+              aria-label="Next photo"
+              className="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 text-white/60 hover:border-white/50 hover:text-white transition-colors"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+            </button>
+            <span className="ml-3 text-[12px] tabular-nums text-white/40 font-medium">
+              {String(current + 1).padStart(2, "0")} / {String(total).padStart(2, "0")}
+            </span>
+          </div>
+        </div>
+      </div>
+
+      {/* Scrollable track */}
+      <div
+        ref={trackRef}
+        className="flex gap-4 overflow-x-auto scroll-smooth px-6 md:px-[calc((100vw-72rem)/2+1.5rem)] pb-4 snap-x snap-mandatory scrollbar-hide"
+        style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+      >
+        {GALLERY_IMAGES.map((img, i) => (
+          <button
+            key={i}
+            onClick={() => goTo(i)}
+            className={`group relative shrink-0 snap-center rounded-2xl overflow-hidden transition-all duration-500 ${
+              i === current
+                ? "w-[320px] md:w-[420px] aspect-[4/3] ring-2 ring-[var(--terracotta)] ring-offset-2 ring-offset-[var(--espresso)]"
+                : "w-[240px] md:w-[300px] aspect-[4/3] opacity-60 hover:opacity-85"
+            }`}
+          >
+            <img
+              src={img.src}
+              alt={lang === "zh" ? img.zh : img.en}
+              loading={i < 5 ? "eager" : "lazy"}
+              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+            />
+            {/* Caption overlay on active slide */}
+            <div
+              className={`absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent flex items-end p-5 transition-opacity duration-500 ${
+                i === current ? "opacity-100" : "opacity-0 group-hover:opacity-100"
+              }`}
+            >
+              <p className="text-white text-[13px] font-medium font-[family-name:var(--font-zh)] leading-snug">
                 {lang === "zh" ? img.zh : img.en}
               </p>
             </div>
-          </div>
+          </button>
         ))}
+      </div>
+
+      {/* Dot indicators */}
+      <div className="mx-auto max-w-6xl px-6 mt-8">
+        <div className="flex items-center gap-1.5 justify-center md:justify-start">
+          {GALLERY_IMAGES.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => goTo(i)}
+              className={`rounded-full transition-all duration-400 ${
+                i === current
+                  ? "w-6 h-1.5 bg-[var(--terracotta)]"
+                  : "w-1.5 h-1.5 bg-white/25 hover:bg-white/40"
+              }`}
+              aria-label={`Photo ${i + 1}`}
+            />
+          ))}
+        </div>
+        {/* Mobile counter */}
+        <p className="mt-4 text-[12px] text-white/35 md:hidden text-center tabular-nums">
+          {String(current + 1).padStart(2, "0")} / {String(total).padStart(2, "0")}
+        </p>
       </div>
     </section>
   );
@@ -1029,10 +1135,10 @@ function Reserve({ lang }: { lang: "zh" | "en" }) {
             <h2 className="font-[family-name:var(--font-display)] text-white text-4xl md:text-6xl tracking-tight leading-tight max-w-2xl mx-auto">
               {lang === "zh" ? (
                 <span className="font-[family-name:var(--font-zh)]">
-                  明天早上 7:30，<br />帕里尼已經在烤了。你呢？
+                  現烤的酥脆帕里尼出爐嘍！，<br />你準備好了嗎？
                 </span>
               ) : (
-                <>Tomorrow at 7:30 AM,<br />the panini press is already hot.</>
+                <>Hot-pressed crunchy panini is waiting for you.<br />Ready?.</>
               )}
             </h2>
             <p className="mt-6 text-white/55 max-w-lg mx-auto leading-relaxed font-[family-name:var(--font-zh)]">
