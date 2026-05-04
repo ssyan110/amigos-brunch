@@ -91,7 +91,7 @@ function ReservationPicker({
               className="flex items-center gap-2 rounded-2xl px-3 py-3 text-sm font-semibold text-[var(--espresso)] transition-colors hover:bg-[var(--cream)]"
             >
               <Phone className="h-4 w-4" />
-              <span>{lang === "zh" ? "來電訂位 (08) 766-9690" : "Call (08) 766-9690"}</span>
+              <span>{lang === "zh" ? "來電訂位" : "Call (08) 766-9690"}</span>
             </a>
             <a
               href={FACEBOOK_HREF}
@@ -136,9 +136,8 @@ function Hero({ lang }: { lang: "zh" | "en" }) {
           key={slide.src}
           src={slide.src}
           alt={slide.alt}
-          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-[800ms] ease-in-out ${
-            i === current && !isTransitioning ? "opacity-100" : "opacity-0"
-          }`}
+          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-[800ms] ease-in-out ${i === current && !isTransitioning ? "opacity-100" : "opacity-0"
+            }`}
         />
       ))}
 
@@ -154,15 +153,15 @@ function Hero({ lang }: { lang: "zh" | "en" }) {
           <h1 className="font-[family-name:var(--font-display)] text-white text-5xl md:text-7xl lg:text-[5.5rem] leading-[1.05] tracking-tight max-w-3xl">
             {lang === "zh" ? (
               <span className="font-[family-name:var(--font-zh)]">
-                把每一次聚餐，<br />變成好吃又舒服的早午餐時光
+                把每一次聚餐，<br />變成難忘的早午餐時光
               </span>
             ) : (
-              <>Turn every gathering<br />into a warm brunch moment.</>
+              <>Turn every gathering<br />into a memorable brunch moment.</>
             )}
           </h1>
           <p className="mt-6 text-white/70 text-base md:text-lg max-w-xl leading-relaxed">
             {lang === "zh"
-              ? "從義式帕里尼、墨西哥捲餅到精緻套餐，適合朋友聚餐、家庭早午餐與公司團體訂餐。每天 7:30 開始，現點現做。"
+              ? "從義式帕里尼、墨西哥捲餅到精緻手作套餐，適合朋友聚餐、家庭早午餐與公司團體訂餐。每天 7:30 開始，現點現做。"
               : "From Italian panini and tortilla wraps to brunch combos — perfect for friends, family, and corporate group orders. Fresh-made daily from 7:30 AM."}
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
@@ -197,9 +196,8 @@ function Hero({ lang }: { lang: "zh" | "en" }) {
               <button
                 key={i}
                 onClick={() => { setCurrent(i); setIsTransitioning(false); }}
-                className={`h-[3px] rounded-full transition-all duration-500 ${
-                  i === current ? "w-8 bg-white" : "w-4 bg-white/30"
-                }`}
+                className={`h-[3px] rounded-full transition-all duration-500 ${i === current ? "w-8 bg-white" : "w-4 bg-white/30"
+                  }`}
                 aria-label={`Slide ${i + 1}`}
               />
             ))}
@@ -229,25 +227,22 @@ function Header({
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? "bg-[var(--cream)]/95 backdrop-blur-md border-b border-[var(--sand)] shadow-sm"
-          : "bg-transparent"
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled
+        ? "bg-[var(--cream)]/95 backdrop-blur-md border-b border-[var(--sand)] shadow-sm"
+        : "bg-transparent"
+        }`}
     >
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
         <a href="#top" className="flex items-center gap-3 group">
           <span
-            className={`font-[family-name:var(--font-display)] text-2xl italic tracking-tight transition-colors ${
-              scrolled ? "text-[var(--espresso)]" : "text-white"
-            } group-hover:text-[var(--terracotta)]`}
+            className={`font-[family-name:var(--font-display)] text-2xl italic tracking-tight transition-colors ${scrolled ? "text-[var(--espresso)]" : "text-white"
+              } group-hover:text-[var(--terracotta)]`}
           >
             Amigos
           </span>
           <span
-            className={`hidden sm:block text-[10px] uppercase tracking-[0.25em] font-medium mt-1 transition-colors ${
-              scrolled ? "text-[var(--muted)]" : "text-white/60"
-            }`}
+            className={`hidden sm:block text-[10px] uppercase tracking-[0.25em] font-medium mt-1 transition-colors ${scrolled ? "text-[var(--muted)]" : "text-white/60"
+              }`}
           >
             Brunch &amp; Cafe
           </span>
@@ -258,14 +253,13 @@ function Header({
             { href: "#story", zh: "品牌故事", en: "Story" },
             { href: "#menu", zh: "菜單", en: "Menu" },
             { href: "#catering", zh: "團體訂餐", en: "Group Orders" },
-            { href: "#visit", zh: "門市資訊", en: "Visit" },
+            { href: "#visit", zh: "店家資訊", en: "Visit" },
           ].map((link) => (
             <a
               key={link.href}
               href={link.href}
-              className={`transition-colors font-[family-name:var(--font-zh)] ${
-                scrolled ? "text-[var(--muted)] hover:text-[var(--espresso)]" : "text-white/70 hover:text-white"
-              }`}
+              className={`transition-colors font-[family-name:var(--font-zh)] ${scrolled ? "text-[var(--muted)] hover:text-[var(--espresso)]" : "text-white/70 hover:text-white"
+                }`}
             >
               {lang === "zh" ? link.zh : link.en}
             </a>
@@ -287,22 +281,20 @@ function Header({
           <div className="flex gap-2 text-[11px] tracking-[0.15em] font-semibold uppercase">
             <button
               onClick={() => setLang("zh")}
-              className={`transition-colors ${
-                lang === "zh"
-                  ? "text-[var(--terracotta)]"
-                  : scrolled ? "text-[var(--muted)]" : "text-white/50"
-              }`}
+              className={`transition-colors ${lang === "zh"
+                ? "text-[var(--terracotta)]"
+                : scrolled ? "text-[var(--muted)]" : "text-white/50"
+                }`}
             >
               中
             </button>
             <span className={scrolled ? "text-[var(--sand)]" : "text-white/20"}>/</span>
             <button
               onClick={() => setLang("en")}
-              className={`transition-colors ${
-                lang === "en"
-                  ? "text-[var(--terracotta)]"
-                  : scrolled ? "text-[var(--muted)]" : "text-white/50"
-              }`}
+              className={`transition-colors ${lang === "en"
+                ? "text-[var(--terracotta)]"
+                : scrolled ? "text-[var(--muted)]" : "text-white/50"
+                }`}
             >
               EN
             </button>
@@ -310,9 +302,8 @@ function Header({
           <button
             type="button"
             aria-label={mobileOpen ? (lang === "zh" ? "關閉選單" : "Close menu") : "Open menu"}
-            className={`md:hidden text-sm font-semibold tracking-wider uppercase transition-colors ${
-              scrolled ? "text-[var(--espresso)]" : "text-white"
-            }`}
+            className={`md:hidden text-sm font-semibold tracking-wider uppercase transition-colors ${scrolled ? "text-[var(--espresso)]" : "text-white"
+              }`}
             onClick={() => setMobileOpen(!mobileOpen)}
           >
             {mobileOpen ? <CloseIcon className="h-5 w-5" /> : <MenuIcon className="h-5 w-5" />}
@@ -325,7 +316,7 @@ function Header({
           <a href="#story" onClick={() => setMobileOpen(false)} className="block text-lg">品牌故事</a>
           <a href="#menu" onClick={() => setMobileOpen(false)} className="block text-lg">菜單</a>
           <a href="#catering" onClick={() => setMobileOpen(false)} className="block text-lg">團體訂餐</a>
-          <a href="#visit" onClick={() => setMobileOpen(false)} className="block text-lg">門市資訊</a>
+          <a href="#visit" onClick={() => setMobileOpen(false)} className="block text-lg">店家資訊</a>
           <ReservationPicker
             lang={lang}
             label={
@@ -402,9 +393,9 @@ function Story({ lang }: { lang: "zh" | "en" }) {
             </p>
             <h2 className="font-[family-name:var(--font-display)] text-4xl md:text-5xl leading-tight tracking-tight mb-8">
               {lang === "zh" ? (
-                <span className="font-[family-name:var(--font-zh)]">Amigos，<br />就是好朋友</span>
+                <span className="font-[family-name:var(--font-zh)]">Amigos，<br />就是朋友的意思</span>
               ) : (
-                <>Amigos means<br />good friends.</>
+                <>Amigos means<br /> friends.</>
               )}
             </h2>
             <div className="space-y-5 text-[var(--muted)] leading-relaxed font-[family-name:var(--font-zh)]">
@@ -458,8 +449,8 @@ function SignatureHighlight({ lang }: { lang: "zh" | "en" }) {
         </h2>
         <p className="mt-6 text-white/55 max-w-lg mx-auto leading-relaxed font-[family-name:var(--font-zh)]">
           {lang === "zh"
-            ? "每一份帕里尼都經過熱壓至外酥內軟，搭配新鮮食材與手工醬料。20 多種口味，從經典到創意——第一次來？先從人氣推薦開始。"
-            : "Every panini is hot-pressed to crispy perfection with fresh ingredients and house-made sauces. 20+ flavors — first time? Start with our popular picks."}
+            ? "每一份帕里尼都經過熱壓至外酥內軟，搭配新鮮食材與手工醬料。20 多種口味，從經典到創意。第一次來嗎？先從人氣推薦開始吧！"
+            : "Every panini is hot-pressed to crispy perfection with fresh ingredients and house-made sauces. 20+ flavors — first time? Start with our popular picks!"}
         </p>
         <a
           href="#menu"
@@ -524,20 +515,18 @@ function MenuAccordion({
 
   return (
     <div
-      className={`mb-3 rounded-2xl transition-shadow duration-300 overflow-hidden ${
-        isOpen
-          ? "shadow-md shadow-black/8 bg-white"
-          : "shadow-sm shadow-black/5 bg-white hover:shadow-md hover:shadow-black/8"
-      }`}
+      className={`mb-3 rounded-2xl transition-shadow duration-300 overflow-hidden ${isOpen
+        ? "shadow-md shadow-black/8 bg-white"
+        : "shadow-sm shadow-black/5 bg-white hover:shadow-md hover:shadow-black/8"
+        }`}
     >
       {/* Header */}
       <button
         onClick={onToggle}
-        className={`w-full flex items-center justify-between px-5 py-4 text-left transition-colors duration-300 active:scale-[0.995] ${
-          isOpen
-            ? "bg-[var(--espresso)] text-white"
-            : "bg-white text-[var(--espresso)]"
-        }`}
+        className={`w-full flex items-center justify-between px-5 py-4 text-left transition-colors duration-300 active:scale-[0.995] ${isOpen
+          ? "bg-[var(--espresso)] text-white"
+          : "bg-white text-[var(--espresso)]"
+          }`}
         style={{ WebkitTapHighlightColor: "transparent" }}
       >
         <div className="flex-1 min-w-0">
@@ -545,19 +534,17 @@ function MenuAccordion({
             {lang === "zh" ? category.zh : category.en}
           </h3>
           {lang === "zh" && (
-            <p className={`text-[11px] tracking-[0.12em] mt-0.5 ${
-              isOpen ? "text-white/50" : "text-[var(--muted)]"
-            }`}>
+            <p className={`text-[11px] tracking-[0.12em] mt-0.5 ${isOpen ? "text-white/50" : "text-[var(--muted)]"
+              }`}>
               {category.en}
             </p>
           )}
         </div>
         <div className="flex items-center gap-2.5 shrink-0 ml-4">
-          <span className={`text-[11px] font-medium tabular-nums px-2 py-0.5 rounded-full ${
-            isOpen
-              ? "bg-white/15 text-white/70"
-              : "bg-[var(--linen)] text-[var(--muted)]"
-          }`}>
+          <span className={`text-[11px] font-medium tabular-nums px-2 py-0.5 rounded-full ${isOpen
+            ? "bg-white/15 text-white/70"
+            : "bg-[var(--linen)] text-[var(--muted)]"
+            }`}>
             {itemCount}
           </span>
           <ChevronDown
@@ -568,9 +555,8 @@ function MenuAccordion({
 
       {/* Items — directly attached below header */}
       <div
-        className={`overflow-hidden transition-all duration-400 ease-in-out ${
-          isOpen ? "max-h-[3000px] opacity-100" : "max-h-0 opacity-0"
-        }`}
+        className={`overflow-hidden transition-all duration-400 ease-in-out ${isOpen ? "max-h-[3000px] opacity-100" : "max-h-0 opacity-0"
+          }`}
       >
         <div className="px-5 py-4 border-t border-[var(--sand)]/50">
           {/* Category note — panini gets a banner, others get italic text */}
@@ -656,9 +642,9 @@ function MenuSection({ lang }: { lang: "zh" | "en" }) {
             </p>
             <h2 className="font-[family-name:var(--font-display)] text-4xl md:text-5xl tracking-tight leading-tight">
               {lang === "zh" ? (
-                <span className="font-[family-name:var(--font-zh)]">全日菜單</span>
+                <span className="font-[family-name:var(--font-zh)]">Amigos菜單</span>
               ) : (
-                "All-Day Menu"
+                "Our Menu"
               )}
             </h2>
           </div>
@@ -776,10 +762,10 @@ function Catering({ lang }: { lang: "zh" | "en" }) {
             <h2 className="font-[family-name:var(--font-display)] text-4xl md:text-5xl tracking-tight leading-tight mb-6">
               {lang === "zh" ? (
                 <span className="font-[family-name:var(--font-zh)]">
-                  讓帕里尼<br />成為你的會議亮點
+                  讓帕里尼<br />成為你聚餐的亮點
                 </span>
               ) : (
-                <>Make panini<br />your meeting highlight</>
+                <>Make panini<br />your gathering's highlight</>
               )}
             </h2>
             <div className="space-y-4 text-[var(--muted)] leading-relaxed font-[family-name:var(--font-zh)]">
@@ -790,8 +776,8 @@ function Catering({ lang }: { lang: "zh" | "en" }) {
               </p>
               <p>
                 {lang === "zh"
-                  ? "提前 3 天預訂，菜單可依需求客製。想知道怎麼訂？直接來電或 Facebook 私訊我們。"
-                  : "Book 3 days ahead, and we'll customize the menu to your needs. Want to know how? Call us or send a Facebook message."}
+                  ? "提前 2 天預訂，菜單可依需求客製。想知道怎麼訂？請來電或 Facebook 私訊洽詢。"
+                  : "Book 2 days ahead, and we'll customize the menu to your needs. Want to know how? Call us or send a Facebook message."}
               </p>
             </div>
 
@@ -802,7 +788,7 @@ function Catering({ lang }: { lang: "zh" | "en" }) {
                 className="inline-flex items-center gap-2 rounded-full bg-[var(--terracotta)] px-7 py-3.5 text-[13px] font-semibold text-white tracking-wide hover:bg-[var(--terracotta-light)] transition-colors"
               >
                 <Phone className="h-4 w-4" />
-                <span>{lang === "zh" ? "來電洽詢 (08) 766-9690" : "Call (08) 766-9690"}</span>
+                <span>{lang === "zh" ? "來電洽詢" : "Call (08) 766-9690"}</span>
               </a>
               <a
                 href="https://www.facebook.com/amigosyan"
@@ -831,7 +817,7 @@ function Catering({ lang }: { lang: "zh" | "en" }) {
                 </p>
                 <a href="tel:08-766-9690" className="mt-3 inline-flex items-center gap-1.5 text-[12px] font-semibold text-[var(--terracotta)] uppercase tracking-wider hover:text-[var(--terracotta-light)] transition-colors">
                   <Phone className="h-3.5 w-3.5" />
-                  <span>{lang === "zh" ? "來電洽詢報價" : "Call for pricing"}</span>
+                  <span>{lang === "zh" ? "來電洽詢" : "Request for proposal"}</span>
                   <ArrowRight className="h-3.5 w-3.5" />
                 </a>
               </div>
@@ -845,7 +831,7 @@ function Catering({ lang }: { lang: "zh" | "en" }) {
               <ul className="space-y-2 text-sm text-white/75 font-[family-name:var(--font-zh)]">
                 <li className="flex items-start gap-2">
                   <Check className="mt-0.5 h-4 w-4 shrink-0 text-[var(--terracotta-light)]" />
-                  {lang === "zh" ? "提前 3 天預訂，準時送達" : "3-day advance booking, on-time delivery"}
+                  {lang === "zh" ? "提前 2 天預訂，準時送達" : "2-day advance booking, on-time delivery"}
                 </li>
                 <li className="flex items-start gap-2">
                   <Check className="mt-0.5 h-4 w-4 shrink-0 text-[var(--terracotta-light)]" />
@@ -899,13 +885,13 @@ function Visit({ lang }: { lang: "zh" | "en" }) {
         <div className="grid md:grid-cols-5 gap-16">
           <div className="md:col-span-2">
             <p className="text-[11px] uppercase tracking-[0.35em] text-[var(--terracotta)] mb-4 font-semibold">
-              {lang === "zh" ? "門市資訊" : "Visit Us"}
+              {lang === "zh" ? "店家資訊" : "Restaurant Info"}
             </p>
             <h2 className="font-[family-name:var(--font-display)] text-4xl tracking-tight leading-tight mb-10">
               {lang === "zh" ? (
                 <span className="font-[family-name:var(--font-zh)]">AMIGOS早午餐</span>
               ) : (
-                "Come visit"
+                "Restaurant Info"
               )}
             </h2>
 
@@ -996,7 +982,7 @@ function Reserve({ lang }: { lang: "zh" | "en" }) {
             </h2>
             <p className="mt-6 text-white/55 max-w-lg mx-auto leading-relaxed font-[family-name:var(--font-zh)]">
               {lang === "zh"
-                ? "不管是兩個人的早午餐、十個人的聚餐、還是公司團體訂餐——一通電話就搞定。"
+                ? "不管是兩個人的早午餐、十個人的聚餐、還是公司團體訂餐—，一通電話就搞定。"
                 : "Whether it's brunch for two, a gathering of ten, or a corporate group order — one call is all it takes."}
             </p>
             <div className="mt-10 flex flex-wrap justify-center gap-3">
@@ -1005,7 +991,7 @@ function Reserve({ lang }: { lang: "zh" | "en" }) {
                 label={
                   <>
                     <Phone className="h-4 w-4" />
-                    <span>{lang === "zh" ? "來電訂位 (08) 766-9690" : "Call (08) 766-9690"}</span>
+                    <span>{lang === "zh" ? "來電訂位" : "Call (08) 766-9690"}</span>
                   </>
                 }
                 className="inline-flex items-center gap-2 rounded-full bg-white px-8 py-3.5 text-[13px] font-semibold text-[var(--espresso)] tracking-wide hover:bg-[var(--terracotta)] hover:text-white transition-colors"
@@ -1052,7 +1038,7 @@ function Footer({ lang }: { lang: "zh" | "en" }) {
             <div className="space-y-2 text-[13px] text-white/65 font-[family-name:var(--font-zh)]">
               <a href="#menu" className="block hover:text-white transition-colors">{lang === "zh" ? "菜單" : "Menu"}</a>
               <a href="#catering" className="block hover:text-white transition-colors">{lang === "zh" ? "團體訂餐" : "Group Orders"}</a>
-              <a href="#visit" className="block hover:text-white transition-colors">{lang === "zh" ? "門市資訊" : "Visit Us"}</a>
+              <a href="#visit" className="block hover:text-white transition-colors">{lang === "zh" ? "店家資訊" : "Visit Us"}</a>
               <a href="https://www.facebook.com/amigosyan" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 hover:text-white transition-colors">
                 <MessageCircleMore className="h-4 w-4" />
                 <span>Facebook</span>
