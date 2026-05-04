@@ -442,7 +442,7 @@ function SignatureHighlight({ lang }: { lang: "zh" | "en" }) {
         <h2 className="font-[family-name:var(--font-display)] text-white text-4xl md:text-6xl lg:text-7xl tracking-tight leading-tight max-w-3xl mx-auto">
           {lang === "zh" ? (
             <span className="font-[family-name:var(--font-zh)]">
-              義式帕里尼<br />外酥內軟，咬下去會喀滋喀滋的
+              香脆義式帕里尼<br />一口咬下<br />就有咔滋咔滋的幸福口感
             </span>
           ) : (
             <>Italian Panini<br />Golden crust. Every bite crunches.</>
