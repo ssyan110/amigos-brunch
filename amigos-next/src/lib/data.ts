@@ -351,6 +351,8 @@ export const GALLERY_IMAGES: GalleryImage[] = [
   { src: "/gallery/IMG_2039.jpg", zh: "週末早午餐", en: "Weekend brunch" },
   { src: "/gallery/IMG_2040.jpg", zh: "團體訂餐", en: "Group orders" },
   { src: "/gallery/IMG_2041.jpg", zh: "用心料理每一份", en: "Made with care" },
+  { src: "/gallery/IMG_2042.jpg", zh: "香脆外皮", en: "Crunchy paninis" },
+  { src: "/gallery/IMG_2043.jpg", zh: "讓聚餐更開心", en: "Make every gathering meaningful" },
 ];
 
 export const CATERING_PACKAGES = [
