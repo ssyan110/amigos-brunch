@@ -153,7 +153,7 @@ function Hero({ lang }: { lang: "zh" | "en" }) {
           <h1 className="font-[family-name:var(--font-display)] text-white text-5xl md:text-7xl lg:text-[5.5rem] leading-[1.05] tracking-tight max-w-3xl">
             {lang === "zh" ? (
               <span className="font-[family-name:var(--font-zh)]">
-                香脆熱烤帕里尼，<br />等你帶朋友來享用
+                香脆熱烤帕里尼，<br />等您帶朋友來享用
               </span>
             ) : (
               <>Crispy, hot-pressed panini<br />overflowing with flavor.</>
@@ -809,7 +809,7 @@ function Catering({ lang }: { lang: "zh" | "en" }) {
             <h2 className="font-[family-name:var(--font-display)] text-4xl md:text-5xl tracking-tight leading-tight mb-6">
               {lang === "zh" ? (
                 <span className="font-[family-name:var(--font-zh)]">
-                  讓帕里尼<br />成為你聚餐的亮點
+                  讓帕里尼<br />成為您聚餐的亮點
                 </span>
               ) : (
                 <>Make panini<br />your gathering's highlight</>
@@ -1135,7 +1135,7 @@ function Reserve({ lang }: { lang: "zh" | "en" }) {
             <h2 className="font-[family-name:var(--font-display)] text-white text-4xl md:text-6xl tracking-tight leading-tight max-w-2xl mx-auto">
               {lang === "zh" ? (
                 <span className="font-[family-name:var(--font-zh)]">
-                  現烤的酥脆帕里尼出爐嘍！，<br />你準備好了嗎？
+                  現烤的酥脆帕里尼出爐嘍！，<br />您準備好了嗎？
                 </span>
               ) : (
                 <>Hot-pressed crunchy panini is waiting for you.<br />Ready?.</>
