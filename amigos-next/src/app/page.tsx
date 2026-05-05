@@ -148,7 +148,7 @@ function Hero({ lang }: { lang: "zh" | "en" }) {
       <div className="relative z-10 flex h-full flex-col justify-end px-6 pb-16 md:pb-24">
         <div className="mx-auto w-full max-w-6xl">
           <p className="text-[12px] uppercase tracking-[0.3em] text-white/60 mb-5 font-medium">
-            {lang === "zh" ? "屏東人的早午餐老朋友 · 義式帕里尼專門店" : "Pingtung's favorite brunch spot · Italian panini specialists"}
+            {lang === "zh" ? "屏東人的早午餐老朋友 · 義式帕里尼專門店" : "Pingtung's go-to brunch · Home of the Italian panini"}
           </p>
           <h1 className="font-[family-name:var(--font-display)] text-white text-3xl sm:text-5xl md:text-7xl lg:text-[5.5rem] leading-[1.1] tracking-tight max-w-3xl">
             {lang === "zh" ? (
@@ -156,13 +156,13 @@ function Hero({ lang }: { lang: "zh" | "en" }) {
                 香脆熱烤帕里尼，<br />等您帶朋友來享用
               </span>
             ) : (
-              <>Crispy, hot-pressed panini<br />overflowing with flavor.</>
+              <>Hot-pressed panini.<br />Golden, crunchy, loaded.</>
             )}
           </h1>
           <p className="mt-4 sm:mt-6 text-white/70 text-sm sm:text-base md:text-lg max-w-xl leading-relaxed">
             {lang === "zh"
               ? "屏東在地十年的帕里尼專門店，20 多種現烤香脆的滋味。不管兩個人的早午餐、十個人的聚餐，還是公司團體訂餐，一個地方就搞定。"
-              : "10 years in Pingtung. 20+ flavors hot-pressed daily. Whether it's brunch for two or catering for twenty — this is your spot."}
+              : "A decade in Pingtung. Over 20 flavors pressed fresh every morning. Brunch for two, a party of ten, or catering for the whole office — we've got it."}
           </p>
           <div className="mt-6 sm:mt-8 flex flex-wrap gap-2.5 sm:gap-3">
             <a
@@ -341,9 +341,9 @@ function Header({
 /* ─── Social proof bar ─── */
 function TrustBar({ lang }: { lang: "zh" | "en" }) {
   const stats = [
-    { num: "10+", zh: "年屏東在地經營", en: "Years serving Pingtung", href: undefined },
-    { num: "20+", zh: "種帕里尼口味", en: "Panini flavors on our menu", href: undefined },
-    { num: "4.2", zh: "Google 評論 · 564 則", en: "Google Reviews · 564 ratings", href: "https://maps.app.goo.gl/DPaBLB2GdnHyErC1A", showStar: true },
+    { num: "10+", zh: "年屏東在地經營", en: "Years in Pingtung", href: undefined },
+    { num: "20+", zh: "種帕里尼口味", en: "Panini flavors", href: undefined },
+    { num: "4.2", zh: "Google 評論 · 564 則", en: "on Google · 564 reviews", href: "https://maps.app.goo.gl/DPaBLB2GdnHyErC1A", showStar: true },
   ];
 
   return (
@@ -403,12 +403,12 @@ function Story({ lang }: { lang: "zh" | "en" }) {
               <p>
                 {lang === "zh"
                   ? "Amigos，西班牙語的「朋友們」。十多年前，我們在屏東濟南街開了一家小小的早餐店，只有一台帕里尼機、幾張桌子、和一個簡單的想法：讓每天早上的第一餐，吃起來像在朋友家一樣自在。"
-                  : "Amigos — that's \"friends\" in Spanish. Over a decade ago, we opened a tiny breakfast shop on Jinan Street in Pingtung with one panini press, a few tables, and a simple idea: make the first meal of the day feel like eating at a friend's house."}
+                  : "Amigos is Spanish for \"friends.\" Over a decade ago, we set up shop on Jinan Street with one panini press, a handful of tables, and one idea: breakfast should feel like eating at a friend's place."}
               </p>
               <p>
                 {lang === "zh"
                   ? "從一開始的幾款口味，到現在菜單上超過 20 種帕里尼以及多種手作料理，每一款都是我們試了又試、調了又調才和大家分享的餐點。我們沒有華麗的裝潢，但每一份餐點都是全心全意為您準備的。"
-                  : "What started with a handful of recipes has grown into a menu of 20+ panini and a variety of handcrafted dishes — each one tested and tweaked until it was ready to share. We don't do fancy interiors, but every dish is prepared wholeheartedly for you."}
+                  : "What started as a few recipes has grown into 20+ panini and a full menu of handmade dishes — each one tested and tweaked until we were proud to serve it. No fancy décor, just food made with heart."}
               </p>
             </div>
           </div>
@@ -454,6 +454,11 @@ function MenuItemRow({ item, lang }: { item: MenuItem; lang: "zh" | "en" }) {
           ${item.price}
         </span>
       </div>
+      {item.desc && (
+        <p className="mt-0.5 text-[12px] text-[var(--muted)] leading-relaxed font-[family-name:var(--font-zh)]">
+          {lang === "zh" ? item.desc.zh : item.desc.en}
+        </p>
+      )}
     </li>
   );
 }
@@ -674,19 +679,19 @@ function SocialProof({ lang }: { lang: "zh" | "en" }) {
     {
       name: "李蛋蛋",
       zh: "生意很好的店家，便宜！帕尼尼真的強～環境乾淨，時間不會等太久，店滿時會有候位單可以寫。",
-      en: "Always busy for a reason. Cheap! The panini is seriously good. Clean environment, reasonable wait, and they have a waitlist when it's full.",
+      en: "Always packed for a reason — affordable, the panini is legit, the place is clean, and the wait is never too bad. They have a waitlist when it's full.",
       stars: 5,
     },
     {
       name: "蕭一傑",
       zh: "義大利麵非常讚大推一個，價格親民，煎煮炒炸都難不倒店員's。",
-      en: "Highly recommend the pasta! Affordable prices and the staff can handle any cooking style.",
+      en: "The pasta is incredible — highly recommend. Great prices, and the kitchen can do it all.",
       stars: 5,
     },
     {
       name: "漆一二",
       zh: "餐點很好吃，份量也足夠，但提前預定好會比較有效率，人很多會等很久。",
-      en: "Delicious food with generous portions. Better to book ahead since it gets very busy.",
+      en: "Really good food, generous portions. Just book ahead — it gets busy and the wait can be long if you don't.",
       stars: 5,
     },
   ];
@@ -696,7 +701,7 @@ function SocialProof({ lang }: { lang: "zh" | "en" }) {
       <div className="mx-auto max-w-6xl px-6">
         <div className="text-center mb-8 sm:mb-10">
           <p className="text-[11px] uppercase tracking-[0.35em] text-[var(--terracotta)] mb-4 font-semibold">
-            {lang === "zh" ? "來自 564 則 Google 真實評價" : "564 real Google reviews"}
+            {lang === "zh" ? "來自 564 則 Google 真實評價" : "From 564 real Google reviews"}
           </p>
           <h3 className="font-[family-name:var(--font-display)] text-xl sm:text-2xl md:text-3xl tracking-tight">
             <span className="inline-flex items-center gap-2">
@@ -704,7 +709,7 @@ function SocialProof({ lang }: { lang: "zh" | "en" }) {
               {lang === "zh" ? (
                 <span className="font-[family-name:var(--font-zh)]">Google 評價 4.2</span>
               ) : (
-                "Google Reviews 4.2"
+                "Rated 4.2 on Google"
               )}
             </span>
           </h3>
@@ -774,19 +779,19 @@ function Catering({ lang }: { lang: "zh" | "en" }) {
                   讓帕里尼<br />成為您聚餐的亮點
                 </span>
               ) : (
-                <>Make panini<br />your gathering's highlight</>
+                <>Panini that steals<br />the show at any gathering</>
               )}
             </h2>
             <div className="space-y-4 text-[var(--muted)] text-sm sm:text-base leading-relaxed font-[family-name:var(--font-zh)]">
               <p>
                 {lang === "zh"
                   ? "辦公午餐、部門聚餐、生日派對、員工福利；不管幾個人，我們都能準備。每份餐點都和店內品質一致，現做現送，乾淨包裝。"
-                  : "From office lunches, team gatherings, birthday parties, to employee perks, no matter the headcount, we've got you covered. Every dish matches our in-store quality, made fresh with clean packaging."}
+                  : "Office lunches, team celebrations, birthday parties, employee perks — whatever the headcount, we handle it. Same quality as dining in, made fresh and packed clean."}
               </p>
               <p>
                 {lang === "zh"
                   ? "提前 2 天預訂，菜單可依需求客製。詳情來電或 Facebook 私訊洽詢。"
-                  : "Book 2 days ahead, and we'll customize the menu to your needs. Call us or send a Facebook message to request for more details."}
+                  : "Give us 2 days' notice and we'll tailor the menu to your group. Call or message us on Facebook for details."}
               </p>
             </div>
 
@@ -826,7 +831,7 @@ function Catering({ lang }: { lang: "zh" | "en" }) {
                 </p>
                 <a href="tel:08-766-9690" className="mt-3 inline-flex items-center gap-1.5 text-[12px] font-semibold text-[var(--terracotta)] uppercase tracking-wider hover:text-[var(--terracotta-light)] transition-colors">
                   <Phone className="h-3.5 w-3.5" />
-                  <span>{lang === "zh" ? "來電洽詢" : "Request for proposal"}</span>
+                  <span>{lang === "zh" ? "來電洽詢" : "Get a quote"}</span>
                   <ArrowRight className="h-3.5 w-3.5" />
                 </a>
               </div>
@@ -840,11 +845,11 @@ function Catering({ lang }: { lang: "zh" | "en" }) {
               <ul className="space-y-2 text-sm text-white/75 font-[family-name:var(--font-zh)]">
                 <li className="flex items-start gap-2">
                   <Check className="mt-0.5 h-4 w-4 shrink-0 text-[var(--terracotta-light)]" />
-                  {lang === "zh" ? "提前 2 天預訂，準時送達" : "2-day advance booking, on-time delivery"}
+                  {lang === "zh" ? "提前 2 天預訂，準時送達" : "Book 2 days ahead — always on time"}
                 </li>
                 <li className="flex items-start gap-2">
                   <Check className="mt-0.5 h-4 w-4 shrink-0 text-[var(--terracotta-light)]" />
-                  {lang === "zh" ? "客製化菜單，滿足素食與過敏需求" : "Custom menus for dietary needs"}
+                  {lang === "zh" ? "客製化菜單，滿足素食與過敏需求" : "Custom menus for dietary & allergy needs"}
                 </li>
               </ul>
             </div>
@@ -902,7 +907,7 @@ function Gallery({ lang }: { lang: "zh" | "en" }) {
               {lang === "zh" ? (
                 <span className="font-[family-name:var(--font-zh)]">每一道都值得慢慢品味</span>
               ) : (
-                "Every dish is worth tasting"
+                "See what's on the table"
               )}
             </h2>
           </div>
@@ -998,13 +1003,13 @@ function Visit({ lang }: { lang: "zh" | "en" }) {
         <div className="grid md:grid-cols-5 gap-10 md:gap-16">
           <div className="md:col-span-2">
             <p className="text-[11px] uppercase tracking-[0.35em] text-[var(--terracotta)] mb-4 font-semibold">
-              {lang === "zh" ? "店家資訊" : "Restaurant Info"}
+              {lang === "zh" ? "店家資訊" : "Find Us"}
             </p>
             <h2 className="font-[family-name:var(--font-display)] text-3xl sm:text-4xl tracking-tight leading-tight mb-8 sm:mb-10">
               {lang === "zh" ? (
                 <span className="font-[family-name:var(--font-zh)]">AMIGOS早午餐</span>
               ) : (
-                "Restaurant Info"
+                "Come Say Hi"
               )}
             </h2>
 
@@ -1025,7 +1030,7 @@ function Visit({ lang }: { lang: "zh" | "en" }) {
                   {lang === "zh" ? "每日 7:30 — 13:30" : "Daily 7:30 AM — 1:30 PM"}
                 </p>
                 <a href="https://www.facebook.com/amigosyan" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 text-[12px] text-[var(--terracotta)] mt-1 font-[family-name:var(--font-zh)] hover:text-[var(--terracotta-light)] transition-colors">
-                  {lang === "zh" ? "每月休息日提前公告在 Facebook 粉專 👉" : "Monthly rest days posted on our Facebook 👉"}
+                  {lang === "zh" ? "每月休息日提前公告在 Facebook 粉專 👉" : "Closed days announced monthly on Facebook 👉"}
                 </a>
               </div>
               <div>
@@ -1100,13 +1105,13 @@ function Reserve({ lang }: { lang: "zh" | "en" }) {
                   現烤酥脆帕里尼出爐！<br />您準備好了嗎？
                 </span>
               ) : (
-                <>Hot-pressed crunchy panini is waiting for you.<br />Ready?</>
+                <>The press is hot.<br />Your table is waiting.</>
               )}
             </h2>
             <p className="mt-4 sm:mt-6 text-white/55 text-sm sm:text-base max-w-lg mx-auto leading-relaxed font-[family-name:var(--font-zh)]">
               {lang === "zh"
                 ? "兩個人的早午餐、十個人的聚餐、公司團體訂餐，一通電話就搞定。"
-                : "Brunch for two, a gathering of ten, or a corporate group order. One call is all it takes."}
+                : "Table for two, a party of ten, or catering for the whole team — one call and you're set."}
             </p>
             <div className="mt-8 sm:mt-10 flex flex-wrap justify-center gap-2.5 sm:gap-3">
               <ReservationPicker
