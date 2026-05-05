@@ -129,7 +129,7 @@ function Hero({ lang }: { lang: "zh" | "en" }) {
   }, [advance]);
 
   return (
-    <section id="top" className="relative h-[90vh] min-h-[600px] max-h-[960px] overflow-hidden">
+    <section id="top" className="relative h-[85vh] sm:h-[90vh] min-h-[520px] sm:min-h-[600px] max-h-[960px] overflow-hidden">
       {/* Slides */}
       {HERO_SLIDES.map((slide, i) => (
         <img
@@ -150,7 +150,7 @@ function Hero({ lang }: { lang: "zh" | "en" }) {
           <p className="text-[12px] uppercase tracking-[0.3em] text-white/60 mb-5 font-medium">
             {lang === "zh" ? "屏東人的早午餐老朋友 · 義式帕里尼專門店" : "Pingtung's favorite brunch spot · Italian panini specialists"}
           </p>
-          <h1 className="font-[family-name:var(--font-display)] text-white text-5xl md:text-7xl lg:text-[5.5rem] leading-[1.05] tracking-tight max-w-3xl">
+          <h1 className="font-[family-name:var(--font-display)] text-white text-3xl sm:text-5xl md:text-7xl lg:text-[5.5rem] leading-[1.1] tracking-tight max-w-3xl">
             {lang === "zh" ? (
               <span className="font-[family-name:var(--font-zh)]">
                 香脆熱烤帕里尼，<br />等您帶朋友來享用
@@ -159,15 +159,15 @@ function Hero({ lang }: { lang: "zh" | "en" }) {
               <>Crispy, hot-pressed panini<br />overflowing with flavor.</>
             )}
           </h1>
-          <p className="mt-6 text-white/70 text-base md:text-lg max-w-xl leading-relaxed">
+          <p className="mt-4 sm:mt-6 text-white/70 text-sm sm:text-base md:text-lg max-w-xl leading-relaxed">
             {lang === "zh"
               ? "屏東在地十年的帕里尼專門店，20 多種現烤香脆的滋味。不管兩個人的早午餐、十個人的聚餐，還是公司團體訂餐，一個地方就搞定。"
               : "10 years in Pingtung. 20+ flavors hot-pressed daily. Whether it's brunch for two or catering for twenty — this is your spot."}
           </p>
-          <div className="mt-8 flex flex-wrap gap-3">
+          <div className="mt-6 sm:mt-8 flex flex-wrap gap-2.5 sm:gap-3">
             <a
               href="#menu"
-              className="rounded-full bg-white px-7 py-3.5 text-[13px] font-semibold text-[var(--espresso)] tracking-wide hover:bg-[var(--terracotta)] hover:text-white transition-colors"
+              className="rounded-full bg-white px-5 sm:px-7 py-3 sm:py-3.5 text-[12px] sm:text-[13px] font-semibold text-[var(--espresso)] tracking-wide hover:bg-[var(--terracotta)] hover:text-white transition-colors"
             >
               {lang === "zh" ? "查看菜單" : "View Menu"}
             </a>
@@ -179,12 +179,12 @@ function Hero({ lang }: { lang: "zh" | "en" }) {
                   <span>{lang === "zh" ? "預訂座位" : "Reserve a Table"}</span>
                 </>
               }
-              className="inline-flex items-center gap-2 rounded-full bg-[var(--terracotta)] px-7 py-3.5 text-[13px] font-semibold text-white tracking-wide hover:bg-[var(--terracotta-light)] transition-colors"
+              className="inline-flex items-center gap-2 rounded-full bg-[var(--terracotta)] px-5 sm:px-7 py-3 sm:py-3.5 text-[12px] sm:text-[13px] font-semibold text-white tracking-wide hover:bg-[var(--terracotta-light)] transition-colors"
               panelClassName="left-0"
             />
             <a
               href="#catering"
-              className="rounded-full border border-white/40 px-7 py-3.5 text-[13px] font-semibold text-white tracking-wide hover:bg-white/10 transition-colors"
+              className="rounded-full border border-white/40 px-5 sm:px-7 py-3 sm:py-3.5 text-[12px] sm:text-[13px] font-semibold text-white tracking-wide hover:bg-white/10 transition-colors"
             >
               {lang === "zh" ? "詢問團體訂餐" : "Group Orders"}
             </a>
@@ -348,18 +348,18 @@ function TrustBar({ lang }: { lang: "zh" | "en" }) {
 
   return (
     <section className="border-y border-[var(--sand)] bg-[var(--linen)]">
-      <div className="mx-auto max-w-6xl px-6 py-10">
-        <div className="grid grid-cols-3 gap-8 text-center">
+      <div className="mx-auto max-w-6xl px-6 py-8 sm:py-10">
+        <div className="grid grid-cols-3 gap-4 sm:gap-8 text-center">
           {stats.map((s) => {
             const inner = (
               <>
-                <p className="font-[family-name:var(--font-accent)] text-3xl md:text-4xl text-[var(--terracotta)]">
-                  <span className="inline-flex items-center gap-1.5">
+                <p className="font-[family-name:var(--font-accent)] text-2xl sm:text-3xl md:text-4xl text-[var(--terracotta)]">
+                  <span className="inline-flex items-center gap-1">
                     <span>{s.num}</span>
-                    {s.showStar ? <Star className="h-5 w-5 fill-current" /> : null}
+                    {s.showStar ? <Star className="h-4 w-4 sm:h-5 sm:w-5 fill-current" /> : null}
                   </span>
                 </p>
-                <p className="mt-1 text-[12px] uppercase tracking-[0.15em] text-[var(--muted)] font-medium">
+                <p className="mt-1 text-[10px] sm:text-[12px] uppercase tracking-[0.1em] sm:tracking-[0.15em] text-[var(--muted)] font-medium leading-tight">
                   {lang === "zh" ? s.zh : s.en}
                 </p>
               </>
@@ -385,21 +385,21 @@ function TrustBar({ lang }: { lang: "zh" | "en" }) {
 /* ─── Story ─── */
 function Story({ lang }: { lang: "zh" | "en" }) {
   return (
-    <section id="story" className="py-24 md:py-32">
+    <section id="story" className="py-16 sm:py-24 md:py-32">
       <div className="mx-auto max-w-6xl px-6">
-        <div className="grid md:grid-cols-2 gap-16 items-center">
+        <div className="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
           <div>
             <p className="text-[11px] uppercase tracking-[0.35em] text-[var(--terracotta)] mb-4 font-semibold">
               {lang === "zh" ? "我們的故事" : "Our Story"}
             </p>
-            <h2 className="font-[family-name:var(--font-display)] text-4xl md:text-5xl leading-tight tracking-tight mb-8">
+            <h2 className="font-[family-name:var(--font-display)] text-3xl sm:text-4xl md:text-5xl leading-tight tracking-tight mb-6 sm:mb-8">
               {lang === "zh" ? (
                 <span className="font-[family-name:var(--font-zh)]">Amigos，<br />就是「朋友們」</span>
               ) : (
                 <>Amigos means<br />&ldquo;friends.&rdquo;</>
               )}
             </h2>
-            <div className="space-y-5 text-[var(--muted)] leading-relaxed font-[family-name:var(--font-zh)]">
+            <div className="space-y-4 sm:space-y-5 text-[var(--muted)] text-sm sm:text-base leading-relaxed font-[family-name:var(--font-zh)]">
               <p>
                 {lang === "zh"
                   ? "Amigos，西班牙語的「朋友們」。十多年前，我們在屏東濟南街開了一家小小的早餐店，只有一台帕里尼機、幾張桌子、和一個簡單的想法：讓每天早上的第一餐，吃起來像在朋友家一樣自在。"
@@ -595,15 +595,15 @@ function MenuSection({ lang }: { lang: "zh" | "en" }) {
   const drinkCategories = FULL_MENU.filter((c) => drinkIds.has(c.id));
 
   return (
-    <section id="menu" className="py-24 md:py-32">
+    <section id="menu" className="py-16 sm:py-24 md:py-32">
       <div className="mx-auto max-w-6xl px-6">
         {/* Header */}
-        <div className="mb-12 flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+        <div className="mb-8 sm:mb-12 flex flex-col md:flex-row md:items-end md:justify-between gap-4 sm:gap-6">
           <div>
             <p className="text-[11px] uppercase tracking-[0.35em] text-[var(--terracotta)] mb-4 font-semibold">
               Menu
             </p>
-            <h2 className="font-[family-name:var(--font-display)] text-4xl md:text-5xl tracking-tight leading-tight">
+            <h2 className="font-[family-name:var(--font-display)] text-3xl sm:text-4xl md:text-5xl tracking-tight leading-tight">
               {lang === "zh" ? (
                 <span className="font-[family-name:var(--font-zh)]">Amigos菜單</span>
               ) : (
@@ -692,13 +692,13 @@ function SocialProof({ lang }: { lang: "zh" | "en" }) {
   ];
 
   return (
-    <section className="py-16 md:py-20 bg-[var(--linen)]">
+    <section className="py-14 sm:py-16 md:py-20 bg-[var(--linen)]">
       <div className="mx-auto max-w-6xl px-6">
-        <div className="text-center mb-10">
+        <div className="text-center mb-8 sm:mb-10">
           <p className="text-[11px] uppercase tracking-[0.35em] text-[var(--terracotta)] mb-4 font-semibold">
             {lang === "zh" ? "來自 564 則 Google 真實評價" : "564 real Google reviews"}
           </p>
-          <h3 className="font-[family-name:var(--font-display)] text-2xl md:text-3xl tracking-tight">
+          <h3 className="font-[family-name:var(--font-display)] text-xl sm:text-2xl md:text-3xl tracking-tight">
             <span className="inline-flex items-center gap-2">
               <Star className="h-6 w-6 fill-[var(--terracotta)] text-[var(--terracotta)]" />
               {lang === "zh" ? (
@@ -711,7 +711,7 @@ function SocialProof({ lang }: { lang: "zh" | "en" }) {
         </div>
 
         {/* Review cards */}
-        <div className="grid md:grid-cols-3 gap-5 mb-10">
+        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-5 mb-8 sm:mb-10">
           {reviews.map((r, i) => (
             <div
               key={i}
@@ -732,12 +732,12 @@ function SocialProof({ lang }: { lang: "zh" | "en" }) {
           ))}
         </div>
 
-        <div className="flex flex-wrap justify-center gap-4">
+        <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-3 sm:gap-4">
           <a
             href="https://maps.app.goo.gl/DPaBLB2GdnHyErC1A"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-full bg-white border border-[var(--sand)] px-6 py-3 text-[13px] font-semibold text-[var(--espresso)] hover:border-[var(--terracotta)] transition-colors"
+            className="inline-flex items-center justify-center gap-2 rounded-full bg-white border border-[var(--sand)] px-5 sm:px-6 py-3 text-[12px] sm:text-[13px] font-semibold text-[var(--espresso)] hover:border-[var(--terracotta)] transition-colors"
           >
             <Star className="h-4 w-4" />
             <span>{lang === "zh" ? "查看更多 Google 評論" : "Read more on Google"}</span>
@@ -746,7 +746,7 @@ function SocialProof({ lang }: { lang: "zh" | "en" }) {
             href="https://www.facebook.com/amigosyan"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-full bg-white border border-[var(--sand)] px-6 py-3 text-[13px] font-semibold text-[var(--espresso)] hover:border-[var(--terracotta)] transition-colors"
+            className="inline-flex items-center justify-center gap-2 rounded-full bg-white border border-[var(--sand)] px-5 sm:px-6 py-3 text-[12px] sm:text-[13px] font-semibold text-[var(--espresso)] hover:border-[var(--terracotta)] transition-colors"
           >
             <MessageCircleMore className="h-4 w-4" />
             <span>{lang === "zh" ? "追蹤 Facebook 粉專" : "Follow on Facebook"}</span>
@@ -760,15 +760,15 @@ function SocialProof({ lang }: { lang: "zh" | "en" }) {
 /* ─── Catering section (B2B) ─── */
 function Catering({ lang }: { lang: "zh" | "en" }) {
   return (
-    <section id="catering" className="py-24 md:py-32 bg-[var(--linen)]">
+    <section id="catering" className="py-16 sm:py-24 md:py-32 bg-[var(--linen)]">
       <div className="mx-auto max-w-6xl px-6">
-        <div className="grid md:grid-cols-2 gap-16 items-start">
+        <div className="grid md:grid-cols-2 gap-10 md:gap-16 items-start">
           {/* Left: messaging */}
           <div>
             <p className="text-[11px] uppercase tracking-[0.35em] text-[var(--terracotta)] mb-4 font-semibold">
               {lang === "zh" ? "團體訂餐" : "Group Orders"}
             </p>
-            <h2 className="font-[family-name:var(--font-display)] text-4xl md:text-5xl tracking-tight leading-tight mb-6">
+            <h2 className="font-[family-name:var(--font-display)] text-3xl sm:text-4xl md:text-5xl tracking-tight leading-tight mb-6">
               {lang === "zh" ? (
                 <span className="font-[family-name:var(--font-zh)]">
                   讓帕里尼<br />成為您聚餐的亮點
@@ -777,7 +777,7 @@ function Catering({ lang }: { lang: "zh" | "en" }) {
                 <>Make panini<br />your gathering's highlight</>
               )}
             </h2>
-            <div className="space-y-4 text-[var(--muted)] leading-relaxed font-[family-name:var(--font-zh)]">
+            <div className="space-y-4 text-[var(--muted)] text-sm sm:text-base leading-relaxed font-[family-name:var(--font-zh)]">
               <p>
                 {lang === "zh"
                   ? "辦公午餐、部門聚餐、生日派對、員工福利；不管幾個人，我們都能準備。每份餐點都和店內品質一致，現做現送，乾淨包裝。"
@@ -791,10 +791,10 @@ function Catering({ lang }: { lang: "zh" | "en" }) {
             </div>
 
             {/* CTA */}
-            <div className="mt-8 flex flex-wrap gap-3">
+            <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row flex-wrap gap-2.5 sm:gap-3">
               <a
                 href="tel:08-766-9690"
-                className="inline-flex items-center gap-2 rounded-full bg-[var(--terracotta)] px-7 py-3.5 text-[13px] font-semibold text-white tracking-wide hover:bg-[var(--terracotta-light)] transition-colors"
+                className="inline-flex items-center justify-center gap-2 rounded-full bg-[var(--terracotta)] px-5 sm:px-7 py-3 sm:py-3.5 text-[12px] sm:text-[13px] font-semibold text-white tracking-wide hover:bg-[var(--terracotta-light)] transition-colors"
               >
                 <Phone className="h-4 w-4" />
                 <span>{lang === "zh" ? "來電洽詢" : "Call (08) 766-9690"}</span>
@@ -803,7 +803,7 @@ function Catering({ lang }: { lang: "zh" | "en" }) {
                 href="https://www.facebook.com/amigosyan"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-full border border-[var(--espresso)] px-7 py-3.5 text-[13px] font-semibold text-[var(--espresso)] tracking-wide hover:bg-[var(--espresso)] hover:text-white transition-colors"
+                className="inline-flex items-center justify-center gap-2 rounded-full border border-[var(--espresso)] px-5 sm:px-7 py-3 sm:py-3.5 text-[12px] sm:text-[13px] font-semibold text-[var(--espresso)] tracking-wide hover:bg-[var(--espresso)] hover:text-white transition-colors"
               >
                 <MessageCircleMore className="h-4 w-4" />
                 <span>{lang === "zh" ? "Facebook 私訊" : "Message on Facebook"}</span>
@@ -888,17 +888,17 @@ function Gallery({ lang }: { lang: "zh" | "en" }) {
   return (
     <section
       id="gallery"
-      className="py-20 md:py-28 bg-[var(--espresso)] overflow-hidden"
+      className="py-14 sm:py-20 md:py-28 bg-[var(--espresso)] overflow-hidden"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
     >
-      <div className="mx-auto max-w-6xl px-6 mb-10">
+      <div className="mx-auto max-w-6xl px-6 mb-6 sm:mb-10">
         <div className="flex items-end justify-between gap-4">
           <div>
-            <p className="text-[11px] uppercase tracking-[0.35em] text-[var(--terracotta-light)] mb-4 font-semibold">
+            <p className="text-[11px] uppercase tracking-[0.35em] text-[var(--terracotta-light)] mb-3 sm:mb-4 font-semibold">
               {lang === "zh" ? "美食相簿" : "Gallery"}
             </p>
-            <h2 className="font-[family-name:var(--font-display)] text-white text-3xl md:text-4xl tracking-tight leading-tight">
+            <h2 className="font-[family-name:var(--font-display)] text-white text-2xl sm:text-3xl md:text-4xl tracking-tight leading-tight">
               {lang === "zh" ? (
                 <span className="font-[family-name:var(--font-zh)]">每一道都值得慢慢品味</span>
               ) : (
@@ -941,8 +941,8 @@ function Gallery({ lang }: { lang: "zh" | "en" }) {
             onClick={() => goTo(i)}
             className={`group relative shrink-0 snap-center rounded-2xl overflow-hidden transition-all duration-500 ${
               i === current
-                ? "w-[320px] md:w-[420px] aspect-[4/3] ring-2 ring-[var(--terracotta)] ring-offset-2 ring-offset-[var(--espresso)]"
-                : "w-[240px] md:w-[300px] aspect-[4/3] opacity-60 hover:opacity-85"
+                ? "w-[260px] sm:w-[320px] md:w-[420px] aspect-[4/3] ring-2 ring-[var(--terracotta)] ring-offset-2 ring-offset-[var(--espresso)]"
+                : "w-[200px] sm:w-[240px] md:w-[300px] aspect-[4/3] opacity-60 hover:opacity-85"
             }`}
           >
             <img
@@ -993,14 +993,14 @@ function Gallery({ lang }: { lang: "zh" | "en" }) {
 /* ─── Visit ─── */
 function Visit({ lang }: { lang: "zh" | "en" }) {
   return (
-    <section id="visit" className="py-24 md:py-32">
+    <section id="visit" className="py-16 sm:py-24 md:py-32">
       <div className="mx-auto max-w-6xl px-6">
-        <div className="grid md:grid-cols-5 gap-16">
+        <div className="grid md:grid-cols-5 gap-10 md:gap-16">
           <div className="md:col-span-2">
             <p className="text-[11px] uppercase tracking-[0.35em] text-[var(--terracotta)] mb-4 font-semibold">
               {lang === "zh" ? "店家資訊" : "Restaurant Info"}
             </p>
-            <h2 className="font-[family-name:var(--font-display)] text-4xl tracking-tight leading-tight mb-10">
+            <h2 className="font-[family-name:var(--font-display)] text-3xl sm:text-4xl tracking-tight leading-tight mb-8 sm:mb-10">
               {lang === "zh" ? (
                 <span className="font-[family-name:var(--font-zh)]">AMIGOS早午餐</span>
               ) : (
@@ -1084,31 +1084,31 @@ function Visit({ lang }: { lang: "zh" | "en" }) {
 /* ─── CTA ─── */
 function Reserve({ lang }: { lang: "zh" | "en" }) {
   return (
-    <section id="reserve" className="py-24 md:py-32 bg-[var(--linen)]">
+    <section id="reserve" className="py-16 sm:py-24 md:py-32 bg-[var(--linen)]">
       <div className="mx-auto max-w-6xl px-6">
-        <div className="relative rounded-3xl overflow-hidden">
+        <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden">
           <img src={ASSETS.panini4} alt="Panini" className="absolute inset-0 w-full h-full object-cover" />
           <div className="absolute inset-0 bg-[var(--espresso)]/80" />
 
-          <div className="relative z-10 px-8 py-20 md:px-16 md:py-28 text-center">
+          <div className="relative z-10 px-6 py-14 sm:px-8 sm:py-20 md:px-16 md:py-28 text-center">
             <p className="text-[11px] uppercase tracking-[0.35em] text-white/50 mb-4 font-medium">
               {lang === "zh" ? "預約" : "Reserve"}
             </p>
-            <h2 className="font-[family-name:var(--font-display)] text-white text-4xl md:text-6xl tracking-tight leading-tight max-w-2xl mx-auto">
+            <h2 className="font-[family-name:var(--font-display)] text-white text-2xl sm:text-4xl md:text-6xl tracking-tight leading-tight max-w-2xl mx-auto">
               {lang === "zh" ? (
                 <span className="font-[family-name:var(--font-zh)]">
                   現烤酥脆帕里尼出爐！<br />您準備好了嗎？
                 </span>
               ) : (
-                <>Hot-pressed crunchy panini is waiting for you.<br />Ready?.</>
+                <>Hot-pressed crunchy panini is waiting for you.<br />Ready?</>
               )}
             </h2>
-            <p className="mt-6 text-white/55 max-w-lg mx-auto leading-relaxed font-[family-name:var(--font-zh)]">
+            <p className="mt-4 sm:mt-6 text-white/55 text-sm sm:text-base max-w-lg mx-auto leading-relaxed font-[family-name:var(--font-zh)]">
               {lang === "zh"
                 ? "兩個人的早午餐、十個人的聚餐、公司團體訂餐，一通電話就搞定。"
                 : "Brunch for two, a gathering of ten, or a corporate group order. One call is all it takes."}
             </p>
-            <div className="mt-10 flex flex-wrap justify-center gap-3">
+            <div className="mt-8 sm:mt-10 flex flex-wrap justify-center gap-2.5 sm:gap-3">
               <ReservationPicker
                 lang={lang}
                 label={
@@ -1117,14 +1117,14 @@ function Reserve({ lang }: { lang: "zh" | "en" }) {
                     <span>{lang === "zh" ? "現在就訂位" : "Book Your Table Now"}</span>
                   </>
                 }
-                className="inline-flex items-center gap-2 rounded-full bg-white px-8 py-3.5 text-[13px] font-semibold text-[var(--espresso)] tracking-wide hover:bg-[var(--terracotta)] hover:text-white transition-colors"
+                className="inline-flex items-center gap-2 rounded-full bg-white px-5 sm:px-8 py-3 sm:py-3.5 text-[12px] sm:text-[13px] font-semibold text-[var(--espresso)] tracking-wide hover:bg-[var(--terracotta)] hover:text-white transition-colors"
                 panelClassName="left-1/2 -translate-x-1/2"
               />
               <a
                 href="https://maps.app.goo.gl/DPaBLB2GdnHyErC1A"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-full border border-white/40 px-8 py-3.5 text-[13px] font-semibold text-white tracking-wide hover:bg-white/10 transition-colors"
+                className="inline-flex items-center gap-2 rounded-full border border-white/40 px-5 sm:px-8 py-3 sm:py-3.5 text-[12px] sm:text-[13px] font-semibold text-white tracking-wide hover:bg-white/10 transition-colors"
               >
                 <MapPin className="h-4 w-4" />
                 <span>{lang === "zh" ? "Google Maps 導航" : "Get Directions"}</span>
